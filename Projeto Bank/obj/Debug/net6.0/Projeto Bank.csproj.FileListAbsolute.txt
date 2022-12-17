@@ -1,0 +1,15 @@
+C:\dev\Projeto Bank\bin\Debug\net6.0\Projeto Bank.exe
+C:\dev\Projeto Bank\bin\Debug\net6.0\Projeto Bank.deps.json
+C:\dev\Projeto Bank\bin\Debug\net6.0\Projeto Bank.runtimeconfig.json
+C:\dev\Projeto Bank\bin\Debug\net6.0\Projeto Bank.dll
+C:\dev\Projeto Bank\bin\Debug\net6.0\Projeto Bank.pdb
+C:\dev\Projeto Bank\obj\Debug\net6.0\Projeto Bank.csproj.AssemblyReference.cache
+C:\dev\Projeto Bank\obj\Debug\net6.0\Projeto Bank.GeneratedMSBuildEditorConfig.editorconfig
+C:\dev\Projeto Bank\obj\Debug\net6.0\Projeto Bank.AssemblyInfoInputs.cache
+C:\dev\Projeto Bank\obj\Debug\net6.0\Projeto Bank.AssemblyInfo.cs
+C:\dev\Projeto Bank\obj\Debug\net6.0\Projeto Bank.csproj.CoreCompileInputs.cache
+C:\dev\Projeto Bank\obj\Debug\net6.0\Projeto Bank.dll
+C:\dev\Projeto Bank\obj\Debug\net6.0\refint\Projeto Bank.dll
+C:\dev\Projeto Bank\obj\Debug\net6.0\Projeto Bank.pdb
+C:\dev\Projeto Bank\obj\Debug\net6.0\Projeto Bank.genruntimeconfig.cache
+C:\dev\Projeto Bank\obj\Debug\net6.0\ref\Projeto Bank.dll
