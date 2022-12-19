@@ -73,6 +73,9 @@ StyleCopReport.xml
 *_p.c
 *_h.h
 *.ilk
+*.csproj
+*.sln
+*.txt
 *.meta
 *.obj
 *.iobj
@@ -86,6 +89,9 @@ StyleCopReport.xml
 *.tlb
 *.tli
 *.tlh
+*.csproj
+*.sln
+*.txt
 *.tmp
 *.tmp_proj
 *_wpftmp.csproj
@@ -377,7 +383,8 @@ MigrationBackup/
 FodyWeavers.xsd
 
 # VS Code files for those working on multiple tools
-.vscode/*
+.vsco
+de/*
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
