@@ -70,6 +70,7 @@ public class Program
     {
         double totalDeSaldos = 0;
         int opcaoPrincipal;
+        int quantidade = 0;
         Console.ForegroundColor = ConsoleColor.Green;
       
 
@@ -121,8 +122,10 @@ public class Program
                 }
                 if (opcaoPrincipal == 4)
                 {
-                    Console.Write("Qual o CPF do usuario : ");                 
-                
+                    Console.Write("Qual o CPF do usuario : ");
+                    cpfs.FindAll(Console.ReadLine());
+                    Console.WriteLine($"CPF = {cpfs} | Titular = {titulares} | Saldo = R${saldos:F2}");
+
                     menuPrincipal();                                  //Menu principal
                     opcaoPrincipal = int.Parse(Console.ReadLine());
                     Console.WriteLine();
@@ -136,7 +139,15 @@ public class Program
                         menuPrincipal();                                  //Menu principal
                         opcaoPrincipal = int.Parse(Console.ReadLine());
                         Console.WriteLine();
-                    }                                                           //teste Commit
+                    }                
+                    if(opcaoPrincipal == 7) 
+                    {
+                        for (int i = 0; i < cpfs.Count; i++)
+                        {
+                            quantidade++;
+                            Console.WriteLine($"A quantidade de usuarios no banco é {quantidade} usuarios");
+                        }
+                        }
                 }
             } while (opcaoPrincipal != 6 && opcaoPrincipal != 9);
 

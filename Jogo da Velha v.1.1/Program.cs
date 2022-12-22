@@ -44,7 +44,6 @@ public class program
         {
             do
             {
-
                 int quantidadeJogadas = 0;
                 if (jogador % 2 == 1)
                 {
@@ -65,6 +64,16 @@ public class program
                 jogador++;
                 Console.ForegroundColor = ConsoleColor.Blue;
 
+                if()                              // se i e j for diferente de l e c entao execulta o laco for
+                for (int i = 0; i <= 2; i++)
+                {
+                    for (int j = 0; j <= 2; j++)
+                    {
+                        jogoDaVelha[i, j] = " ";                    
+                    }
+                   
+                }
+
                 if (jogador % 2 == 1)
                 {
                     jogoDaVelha[l, c] = "X";
@@ -73,24 +82,15 @@ public class program
                 {
                     jogoDaVelha[l, c] = "O";
                 }
-
-                for (l = 0; l <= 2; l++)
-                {
-                    for (c = 0; c <= 2; c++)
-                    {
-                        Console.Write(" ");
-                        Console.Write($"{jogoDaVelha[l, c]} ");
-                    }
-                    if (l != 2)
-                    {
-                        Console.WriteLine();
-                        Console.WriteLine("--│---│--");
-                    }
-                }
+                Console.WriteLine($"{jogoDaVelha[0, 0]}│{jogoDaVelha[0, 1]}│{jogoDaVelha[0, 2]}\n" +
+                                  $"----------\n" +
+                                  $"{jogoDaVelha[1, 0]}│{jogoDaVelha[1, 1]}│{jogoDaVelha[1, 2]}\n" +
+                                  $"----------\n" +
+                                  $"{jogoDaVelha[2, 0]}│{jogoDaVelha[2, 1]}│{jogoDaVelha[2, 2]}\n");
                 Console.ForegroundColor = ConsoleColor.Green;
 
                 Console.WriteLine();                                                                                   //Vitorias Horizontal
-                 quantidadeJogadas++;
+                quantidadeJogadas++;
                 if (jogoDaVelha[0, 0] == jogoDaVelha[0, 1] && jogoDaVelha[0, 2] == jogoDaVelha[0, 0])
                 {
                     if (jogoDaVelha[0, 0] == "X")
@@ -219,20 +219,16 @@ public class program
                         jogoDaVelha = new string[3, 3];
                     }
                 }
-                if(quantidadeJogadas == 9) 
+                if (quantidadeJogadas == 9)
                 {
                     Console.WriteLine("Empate");
                     empate++;
                 }
 
-            } while (pontuacaoJogador1 == 0 || pontuacaoJogador2 == 0);
+            } while (pontuacaoJogador1 == 0 && pontuacaoJogador2 == 0 && opcao != 0);
 
             menuPlacar();
             opcao = int.Parse(Console.ReadLine());
-            if (opcao == 1)
-            {
-                break;
-            }
             if (opcao == 2)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
@@ -240,7 +236,11 @@ public class program
                 $"{jogador1} com {pontuacaoJogador1} VITORIAS \n" +
                 $"{jogador2} com {pontuacaoJogador2} VITORIAS \n");
                 menuPlacar();
-                opcao = int.Parse(Console.ReadLine());
+                opcao = int.Parse(Console.ReadLine());             //jogo da velha gigante
+            }
+            if (opcao == 1)
+            {
+                jogoDaVelha = new string[3, 3];
             }
             else if (opcao == 0)
             {
@@ -248,8 +248,9 @@ public class program
                 Console.WriteLine("JOGO ENCERRADO");
             }
 
-        } while (opcao == 1 );
+        } while (opcao != 0 && opcao == 1);
     }
 
 
 }
+
