@@ -123,8 +123,8 @@ public class Program
                 if (opcaoPrincipal == 4)
                 {
                     Console.Write("Qual o CPF do usuario : ");
-                    cpfs.FindAll(Console.ReadLine());
-                    Console.WriteLine($"CPF = {cpfs} | Titular = {titulares} | Saldo = R${saldos:F2}");
+                    int cpf = cpfs.IndexOf(Console.ReadLine());                                                                   // procurando cpf ok
+                    Console.WriteLine($"CPF = {cpfs[cpf]} | Titular = {titulares[cpf]} | Saldo = R${saldos[cpf]:F2}");
 
                     menuPrincipal();                                  //Menu principal
                     opcaoPrincipal = int.Parse(Console.ReadLine());
@@ -154,8 +154,15 @@ public class Program
             if (opcaoPrincipal == 9)
             { Console.WriteLine("Encerrando sistema ...."); }
 
+
+
             if (opcaoPrincipal == 6)
             {
+                Console.Write("Qual cpf do usuario: ");
+                int cpf = cpfs.IndexOf(Console.ReadLine());
+                Console.Write("Qual a senha do usuario: ");
+                int senha = senhas.IndexOf(Console.ReadLine());
+
                 double saldo = 0, deposito = 0, transferencia = 0, saque = 0, Breackcoin = 0, Meccoin = 0, Newcoin = 0;
                 int opcao = 0;
                 Console.WriteLine("Digite a senha de acesso");
