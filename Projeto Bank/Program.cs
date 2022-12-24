@@ -91,6 +91,7 @@ public class Program
             do
             {
                 do
+
                 {
                     menuPrincipal();                                  //Menu principal
                     opcaoPrincipal = int.Parse(Console.ReadLine());
@@ -159,38 +160,28 @@ public class Program
 
             if (opcaoPrincipal == 6)
             {
-                Console.Write("Qual cpf do usuario: ");
-                int cpf = cpfs.IndexOf(Console.ReadLine());
-                Console.Write("Qual a senha do usuario: ");
-                int senha = senhas.IndexOf(Console.ReadLine());
-
-
                 double saldo = 0, deposito = 0, transferencia = 0, saque = 0, Breackcoin = 0, Meccoin = 0, Newcoin = 0;
                 int opcao = 0;
-                Console.WriteLine("Digite a senha de acesso");
-                Console.Write("*****");
+                Console.Write("Digite o CPF do usuario: ");
                 string cod = Console.ReadLine();
 
                 int result = cpfs.FindIndex(x => x == cod);
 
-                Console.WriteLine(result);
-                Console.WriteLine("aqui");
-
                 while (result == -1)
                 {
-                    Console.WriteLine(" CPF incorreta*");
+                    Console.WriteLine("\nCPF incorreta*");
                     cod = Console.ReadLine();
                     result = cpfs.FindIndex(x => x == cod);
                 }
                 if (result >= 0 && result < cpfs.Count)
                 {
-                    Console.WriteLine("***\nCPF aceito");
+                    Console.WriteLine("CPF aceito\n");
                     Console.WriteLine("Digite a senha ");
+                    Console.Write("***");
                     string senhaInformada = Console.ReadLine();
                     if (senhas[result] == senhaInformada)
                     {
                         Console.WriteLine("Senha Aceita");
-
 
                         Console.WriteLine("-------------------------------------------------");
                         Console.WriteLine("*******OLA SEJA BEM VINDO(A) AO NEW BANK*********");
