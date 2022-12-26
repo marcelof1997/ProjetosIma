@@ -70,6 +70,7 @@ public class program
                     jogador--;
                 }
 
+
                 jogador++;
                 Console.ForegroundColor = ConsoleColor.Blue;
 
@@ -86,16 +87,25 @@ public class program
                 {
                     for (c = 0; c <= 2; c++)
                     {
+                        if (jogoDaVelha[l, c] == null)
+                        {
+                          
+                            jogoDaVelha[l, c] = "#";
+                        }
+                        Console.ForegroundColor = ConsoleColor.Red;
                         Console.Write(" ");
                         Console.Write($"{jogoDaVelha[l, c]} ");
                     }
                     if (l != 2)
                     {
+                        Console.ForegroundColor = ConsoleColor.Blue;
                         Console.WriteLine();
                         Console.WriteLine("--│---│--");
+
                     }
                 }
-         
+
+
                 Console.ForegroundColor = ConsoleColor.Green;
 
                 Console.WriteLine();                                                                                   //Vitorias Horizontal
