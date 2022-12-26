@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.Security.Cryptography;
 
 public class program
@@ -12,6 +13,8 @@ public class program
     static void Main(string[] args)
     {
         string[,] jogoDaVelha = new string[3, 3];
+        int pontuacao;
+        int quantidadeJogadas = 0;
         int opcao = 1;
         int jogador = 0;
         int pontuacaoJogador1 = 0;
@@ -26,8 +29,8 @@ public class program
         Console.WriteLine();
 
         Console.WriteLine("           INSTRUCAO DO JOGO \n" +
-                          "* O primeiro jogador ficara com o  X \n" +
-                          "* O segundo jogador ficara com a  O \n" +
+                          "* O primeiro jogador ficara com  X \n" +
+                          "* O segundo jogador ficara com  O \n" +
                           "* Digite a localizacao que sera colocado \n" +
                           "* Sabendo que o primeiro numero e para linhas e o segundo para as colunas \n" +
                           "* Com um espaco entre os numeros \n" +
@@ -44,8 +47,7 @@ public class program
         {
             do
             {
-
-                int quantidadeJogadas = 0;
+                pontuacao = 0;
                 if (jogador % 2 == 1)
                 {
                     Console.WriteLine();
@@ -61,6 +63,12 @@ public class program
 
                 int l = int.Parse(vet[0]);
                 int c = int.Parse(vet[1]);
+
+                if (l < 0 || l > 2 || c < 0 || c > 2 || jogoDaVelha[l, c] == "X" || jogoDaVelha[l, c] == "O")
+                {
+                    Console.WriteLine("Posicao Invalida");
+                    jogador--;
+                }
 
                 jogador++;
                 Console.ForegroundColor = ConsoleColor.Blue;
@@ -87,22 +95,26 @@ public class program
                         Console.WriteLine("--│---│--");
                     }
                 }
+         
                 Console.ForegroundColor = ConsoleColor.Green;
 
                 Console.WriteLine();                                                                                   //Vitorias Horizontal
-                 quantidadeJogadas++;
+                quantidadeJogadas++;
+
                 if (jogoDaVelha[0, 0] == jogoDaVelha[0, 1] && jogoDaVelha[0, 2] == jogoDaVelha[0, 0])
                 {
                     if (jogoDaVelha[0, 0] == "X")
                     {
                         Console.WriteLine($"jogador {jogador1} ganhou na horiontal linha 0 \nFim de jogo ");
                         pontuacaoJogador1++;
+                        pontuacao++;
                         jogoDaVelha = new string[3, 3];
                     }
                     else if (jogoDaVelha[0, 0] == "O")
                     {
                         Console.WriteLine($"jogador {jogador2} ganhou na horizontal linha 0 \nFim de jogo ");
                         pontuacaoJogador2++;
+                        pontuacao++;
                         jogoDaVelha = new string[3, 3];
                     }
                 }
@@ -113,12 +125,14 @@ public class program
                     {
                         Console.WriteLine($"jogador {jogador1} ganhou na horiontal linha 1 \nFim de jogo ");
                         pontuacaoJogador1++;
+                        pontuacao++;
                         jogoDaVelha = new string[3, 3];
                     }
                     else if (jogoDaVelha[1, 0] == "O")
                     {
                         Console.WriteLine($"jogador {jogador2} ganhou na horizontal linha 1 \nFim de jogo ");
                         pontuacaoJogador2++;
+                        pontuacao++;
                         jogoDaVelha = new string[3, 3];
                     }
                 }
@@ -129,12 +143,14 @@ public class program
                     {
                         Console.WriteLine($"jogador {jogador1} ganhou na horiontal linha 2 \nFim de jogo ");
                         pontuacaoJogador1++;
+                        pontuacao++;
                         jogoDaVelha = new string[3, 3];
                     }
                     else if (jogoDaVelha[2, 0] == "O")
                     {
                         Console.WriteLine($"jogador {jogador2} ganhou na horizontal linha 2 \nFim de jogo ");
                         pontuacaoJogador2++;
+                        pontuacao++;
                         jogoDaVelha = new string[3, 3];
                     }
                 }
@@ -146,12 +162,14 @@ public class program
                     {
                         Console.WriteLine($"jogador {jogador1} ganhou na vertical coluna 0 \nFim de jogo ");
                         pontuacaoJogador1++;
+                        pontuacao++;
                         jogoDaVelha = new string[3, 3];
                     }
                     else if (jogoDaVelha[0, 0] == "O")
                     {
                         Console.WriteLine($"jogador {jogador2} ganhou na vertical coluna 0 \nFim de jogo ");
                         pontuacaoJogador2++;
+                        pontuacao++;
                         jogoDaVelha = new string[3, 3];
                     }
                 }
@@ -162,12 +180,14 @@ public class program
                     {
                         Console.WriteLine($"jogador {jogador1} ganhou na vertical coluna 1 \nFim de jogo ");
                         pontuacaoJogador1++;
+                        pontuacao++;
                         jogoDaVelha = new string[3, 3];
                     }
                     else if (jogoDaVelha[0, 1] == "O")
                     {
                         Console.WriteLine($"jogador {jogador2} ganhou na vertical coluna 1 \nFim de jogo ");
                         pontuacaoJogador2++;
+                        pontuacao++;
                         jogoDaVelha = new string[3, 3];
                     }
                 }
@@ -178,12 +198,14 @@ public class program
                     {
                         Console.WriteLine($"jogador {jogador1} ganhou na vertical coluna 2 \nFim de jogo ");
                         pontuacaoJogador1++;
+                        pontuacao++;
                         jogoDaVelha = new string[3, 3];
                     }
                     else if (jogoDaVelha[0, 2] == "O")
                     {
                         Console.WriteLine($"jogador {jogador2} ganhou na vertical coluna 2 \nFim de jogo ");
                         pontuacaoJogador2++;
+                        pontuacao++;
                         jogoDaVelha = new string[3, 3];
                     }
                 }
@@ -194,12 +216,14 @@ public class program
                     {
                         Console.WriteLine($"jogador {jogador1} ganhou na diagonal \nFim de jogo ");
                         pontuacaoJogador1++;
+                        pontuacao++;
                         jogoDaVelha = new string[3, 3];
                     }
                     else if (jogoDaVelha[0, 0] == "O")
                     {
                         Console.WriteLine($"jogador {jogador2} ganhou na diagonal \nFim de jogo ");
                         pontuacaoJogador2++;
+                        pontuacao++;
                         jogoDaVelha = new string[3, 3];
                     }
                 }
@@ -210,22 +234,25 @@ public class program
                     {
                         Console.WriteLine($"jogador {jogador1} ganhou na diagonal \nFim de jogo ");
                         pontuacaoJogador1++;
+                        pontuacao++;
                         jogoDaVelha = new string[3, 3];
                     }
                     else if (jogoDaVelha[0, 2] == "O")
                     {
                         Console.WriteLine($"jogador {jogador2} ganhou na diagonal \nFim de jogo ");
                         pontuacaoJogador2++;
+                        pontuacao++;
                         jogoDaVelha = new string[3, 3];
                     }
                 }
-                if(quantidadeJogadas == 9) 
+                if (quantidadeJogadas == 9)
                 {
-                    Console.WriteLine("Empate");
+                    Console.WriteLine("Velha");
                     empate++;
+                    pontuacao++;
                 }
 
-            } while (pontuacaoJogador1 == 0 || pontuacaoJogador2 == 0);
+            } while (pontuacao == 0);
 
             menuPlacar();
             opcao = int.Parse(Console.ReadLine());
@@ -239,16 +266,18 @@ public class program
                 Console.WriteLine(" PLACAR \n" +
                 $"{jogador1} com {pontuacaoJogador1} VITORIAS \n" +
                 $"{jogador2} com {pontuacaoJogador2} VITORIAS \n");
+                Console.ForegroundColor = ConsoleColor.Green;
                 menuPlacar();
                 opcao = int.Parse(Console.ReadLine());
             }
+
             else if (opcao == 0)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("JOGO ENCERRADO");
             }
 
-        } while (opcao == 1 );
+        } while (opcao == 1);
     }
 
 
