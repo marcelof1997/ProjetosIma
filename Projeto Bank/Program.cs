@@ -70,7 +70,7 @@ public class Program
     static void Main(string[] args)
     {
         double totalDeSaldos = 0;
-        int opcaoPrincipal;
+        int opcaoPrincipal = 0;
         int quantidade = 0;
         Console.ForegroundColor = ConsoleColor.Green;
 
@@ -90,14 +90,14 @@ public class Program
         {
             do
             {
-                do
 
+                while (opcaoPrincipal < 0 || opcaoPrincipal > 9) ;
                 {
                     menuPrincipal();                                  //Menu principal
                     opcaoPrincipal = int.Parse(Console.ReadLine());
                     Console.WriteLine();
+                } 
                     if (opcaoPrincipal < 0 || opcaoPrincipal > 9) { Console.WriteLine("Opcao invalida\n"); }
-                } while (opcaoPrincipal < 0 || opcaoPrincipal > 9);
 
                 if (opcaoPrincipal == 1)
                 {
@@ -186,8 +186,7 @@ public class Program
                         Console.WriteLine("-------------------------------------------------");
                         Console.WriteLine("*******OLA SEJA BEM VINDO(A) AO NEW BANK*********");
                         Console.WriteLine("-------------------------------------------------");
-                        Console.WriteLine("Seu nome por favor");
-                        string nome = Console.ReadLine();
+                        string nome = (titulares[result]);
 
                         do     // returno confirmar//
                         {
@@ -372,16 +371,7 @@ public class Program
                                     }
                                 } while (opcao < 0 || opcao > 9);
                             }
-                            else if (opcao == 8)
-                            {
-                                do
-                                {
-                                    menuPrincipal();                                  //Menu principal
-                                    opcaoPrincipal = int.Parse(Console.ReadLine());
-                                    Console.WriteLine();
-                                    if (opcaoPrincipal < 0 || opcaoPrincipal > 6) { Console.WriteLine("Opcao invalida\n"); }
-                                } while (opcaoPrincipal < 0 || opcaoPrincipal > 6);
-                            }
+                            
 
                         } while (opcao != 8);
                     }
