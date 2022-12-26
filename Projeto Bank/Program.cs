@@ -70,7 +70,7 @@ public class Program
     static void Main(string[] args)
     {
         double totalDeSaldos = 0;
-        int opcaoPrincipal = 0;
+        int opcaoPrincipal;
         int quantidade = 0;
         Console.ForegroundColor = ConsoleColor.Green;
 
@@ -90,14 +90,14 @@ public class Program
         {
             do
             {
-
-                while (opcaoPrincipal < 0 || opcaoPrincipal > 9) ;
+                do
                 {
                     menuPrincipal();                                  //Menu principal
                     opcaoPrincipal = int.Parse(Console.ReadLine());
                     Console.WriteLine();
-                } 
-                    if (opcaoPrincipal < 0 || opcaoPrincipal > 9) { Console.WriteLine("Opcao invalida\n"); }
+                    if (opcaoPrincipal < 0 || opcaoPrincipal > 9 || opcaoPrincipal == 8) { Console.WriteLine("Opcao invalida\n"); }
+                } while (opcaoPrincipal < 0 || opcaoPrincipal > 9 || opcaoPrincipal == 8);
+
 
                 if (opcaoPrincipal == 1)
                 {
