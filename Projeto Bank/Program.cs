@@ -179,10 +179,10 @@ public class Program
                     Console.WriteLine("Digite a senha ");
                     Console.Write("***");
                     string senhaInformada = Console.ReadLine();
+
                     if (senhas[result] == senhaInformada)
                     {
-                        Console.WriteLine("Senha Aceita");
-
+                        Console.WriteLine("Senha Aceita\n");
                         Console.WriteLine("-------------------------------------------------");
                         Console.WriteLine("*******OLA SEJA BEM VINDO(A) AO NEW BANK*********");
                         Console.WriteLine("-------------------------------------------------");

@@ -43,6 +43,7 @@ public class program
                  " Linha 2          X      \n" +
             "                              \n" +
             "  Nesse caso iria digitar os numeros ( 2 1 ) o numero 2 e o numero da linha e o 1 o numero da coluna  \n");
+
         do
         {
             do
@@ -68,6 +69,7 @@ public class program
                 {
                     Console.WriteLine("Posicao Invalida");
                     jogador--;
+                    empate--;
                 }
 
 
@@ -82,6 +84,8 @@ public class program
                 {
                     jogoDaVelha[l, c] = "O";
                 }
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                string temp = jogoDaVelha[l, c];
 
                 for (l = 0; l <= 2; l++)
                 {
@@ -89,8 +93,7 @@ public class program
                     {
                         if (jogoDaVelha[l, c] == null)
                         {
-                          
-                            jogoDaVelha[l, c] = "#";
+                            jogoDaVelha[l, c] = " ";
                         }
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.Write(" ");
