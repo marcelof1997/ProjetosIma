@@ -52,16 +52,16 @@ public class program
                 int l = 0;
                 int c = 0;
                 int number = int.Parse(Console.ReadLine());
-                Console.ForegroundColor= ConsoleColor.Gray; 
+                Console.ForegroundColor = ConsoleColor.Gray;
                 Console.Clear();
-                Console.WriteLine("                                                                 GUIA \n" +
-                "                                                              1   4   7  \n" +
-                "                                                             ---│---│--- \n" +
-                "                                                              2   5   8  \n" +
-                "                                                             ---│---│--- \n" +
-                "                                                              3   6   9  \n");
-    
-                Console.ForegroundColor=(ConsoleColor) ConsoleColor.Green;
+                Console.WriteLine("    GUIA \n" +
+                "      1   4   7  \n" +
+                "     ---│---│--- \n" +
+                "      2   5   8  \n" +
+                "     ---│---│--- \n" +
+                "      3   6   9  \n");
+
+                Console.ForegroundColor = ConsoleColor.Green;
                 if (jogador % 2 == 1)
                 {
                     Console.WriteLine();
@@ -92,7 +92,7 @@ public class program
 
                 if (l < 0 || l > 2 || c < 0 || c > 2 || jogoDaVelha[l, c] == "X" || jogoDaVelha[l, c] == "O")
                 {
-                    Console.ForegroundColor= ConsoleColor.Red;
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Posicao Invalida , Tente outra..");
                     jogador--;
                     quantidadeJogadas--;
@@ -108,6 +108,7 @@ public class program
                 }
                 else
                 {
+                    Console.ForegroundColor = ConsoleColor.Blue;
                     jogoDaVelha[l, c] = "O";
                 }
                 Console.ForegroundColor = ConsoleColor.Yellow;
@@ -123,17 +124,18 @@ public class program
                         }
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.Write(" ");
-                        Console.Write($"{jogoDaVelha[l, c]} ");
-                    }
-                    if (l != 2)
-                    {
-                        Console.ForegroundColor = ConsoleColor.Blue;
-                        Console.WriteLine();
-                        Console.WriteLine("          --│---│--");
-
                     }
                 }
-
+                Console.WriteLine();
+                Console.WriteLine($"                       {jogoDaVelha[0, 0]}   {jogoDaVelha[0, 1]}   {jogoDaVelha[0, 2]}");
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.WriteLine("                      ---│---│---");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"                       {jogoDaVelha[1, 0]}   {jogoDaVelha[1, 1]}   {jogoDaVelha[1, 2]}");
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.WriteLine("                      ---│---│---");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"                       {jogoDaVelha[2, 0]}   {jogoDaVelha[2, 1]}   {jogoDaVelha[2, 2]}");
 
                 Console.ForegroundColor = ConsoleColor.Green;
 
@@ -295,8 +297,10 @@ public class program
             quantidadeJogadas = 0;
             menuPlacar();
             opcao = int.Parse(Console.ReadLine());
+            Console.Clear();
             if (opcao == 1)
             {
+
                 jogoDaVelha = new string[3, 3];
                 if (jogador % 2 == 1)
                 {
