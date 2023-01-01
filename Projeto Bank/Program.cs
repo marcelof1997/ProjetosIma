@@ -10,7 +10,12 @@ using System.Xml;
 namespace NewBank;
 public class Program
 {
-    static void menuPrincipal()               
+
+    /*saldos[resu]
+     * transferencia[resu]
+     */
+
+    static void menuPrincipal()
     {
         Console.WriteLine("Inserir novo usuario ---------------------(1)");
         Console.WriteLine("Deletar um usuario -----------------------(2)");
@@ -67,6 +72,12 @@ public class Program
             Console.WriteLine($"CPF = {cpfs[i]} | Titular = {titulares[i]} | Saldo = R${saldos[i]:F2}");
         }
     }
+
+    static void nomeBanco()
+    {
+        Console.WriteLine("\r\n /$$   /$$                               /$$$$$$$                      /$$      \r\n| $$$ | $$                              | $$__  $$                    | $$      \r\n| $$$$| $$  /$$$$$$  /$$  /$$  /$$      | $$  \\ $$  /$$$$$$  /$$$$$$$ | $$   /$$\r\n| $$ $$ $$ /$$__  $$| $$ | $$ | $$      | $$$$$$$  |____  $$| $$__  $$| $$  /$$/\r\n| $$  $$$$| $$$$$$$$| $$ | $$ | $$      | $$__  $$  /$$$$$$$| $$  \\ $$| $$$$$$/ \r\n| $$\\  $$$| $$_____/| $$ | $$ | $$      | $$  \\ $$ /$$__  $$| $$  | $$| $$_  $$ \r\n| $$ \\  $$|  $$$$$$$|  $$$$$/$$$$/      | $$$$$$$/|  $$$$$$$| $$  | $$| $$ \\  $$\r\n|__/  \\__/ \\_______/ \\_____/\\___/       |_______/  \\_______/|__/  |__/|__/  \\__/\r\n                                                                                \r\n                                                                                \r\n                                                                                \r\n");
+
+    }
     static void Main(string[] args)
     {
         double totalDeSaldos = 0;
@@ -74,13 +85,14 @@ public class Program
         int quantidade = 0;
         Console.ForegroundColor = ConsoleColor.Green;
 
-
+        nomeBanco();
 
         Console.WriteLine("Vamos configurar o sitema ");
 
         Console.Write("Digite a quantidade de usuarios : ");
         int quantidadeDeUsuarios = int.Parse(Console.ReadLine());
         Console.WriteLine();
+        Console.Clear();
 
         List<string> cpfs = new List<string>();
         List<string> titulares = new List<string>();
@@ -95,6 +107,7 @@ public class Program
                     menuPrincipal();                                  //Menu principal
                     opcaoPrincipal = int.Parse(Console.ReadLine());
                     Console.WriteLine();
+                    Console.Clear();
                     if (opcaoPrincipal < 0 || opcaoPrincipal > 9 || opcaoPrincipal == 8) { Console.WriteLine("Opcao invalida\n"); }
                 } while (opcaoPrincipal < 0 || opcaoPrincipal > 9 || opcaoPrincipal == 8);
 
@@ -113,7 +126,8 @@ public class Program
 
                     menuPrincipal();                                  //Menu principal
                     opcaoPrincipal = int.Parse(Console.ReadLine());
-                    Console.WriteLine();                                                      
+                    Console.WriteLine();
+                    Console.Clear();
                 }
                 if (opcaoPrincipal == 3)
                 {
@@ -121,6 +135,7 @@ public class Program
                     menuPrincipal();                                  //Menu principal
                     opcaoPrincipal = int.Parse(Console.ReadLine());
                     Console.WriteLine();
+                    Console.Clear();
                 }
                 if (opcaoPrincipal == 4)
                 {
@@ -156,14 +171,13 @@ public class Program
             if (opcaoPrincipal == 9)
             { Console.WriteLine("Encerrando sistema ...."); }
 
-
-
             if (opcaoPrincipal == 6)
             {
-                double saldo = 0, deposito = 0, transferencia = 0, saque = 0, Breackcoin = 0, Meccoin = 0, Newcoin = 0;
+                double deposito = 0, transferencia = 0, saque = 0, Breackcoin = 0, Meccoin = 0, Newcoin = 0;
                 int opcao = 0;
                 Console.Write("Digite o CPF do usuario: ");
                 string cod = Console.ReadLine();
+                Console.Clear();
 
                 int result = cpfs.FindIndex(x => x == cod);
 
@@ -192,6 +206,7 @@ public class Program
                         {
                             menu();
                             opcao = int.Parse(Console.ReadLine());
+                            Console.Clear();
 
                             if (opcao > 9 || opcao < 0)
                             {
@@ -203,53 +218,69 @@ public class Program
                         {
                             if (opcao == 1)  // saldo ok upgrade//
                             {
-                                Console.WriteLine($"{nome} Seu saldo atual é R$ {saldo}\n");
+                                Console.WriteLine($"{titulares[result]} Seu saldo atual é R$ {saldos[result]}\n");
                                 Console.WriteLine($"Voce tem de Breackcoin B¢ {Breackcoin}\nMeccoin M¢ {Meccoin}\nNewcoin N¢ {Newcoin}");
                                 retornoEncerrar(); opcao = int.Parse(Console.ReadLine());
+                                Console.Clear();
                             }
                             else if (opcao == 2)    // Area saque ok confirmar upgrade//
                             {
-                                Console.WriteLine($"{nome} Qual valor do saque ?");
+                                Console.WriteLine($"{titulares[result]} Qual valor do saque ?");
                                 Console.Write("R$ ");
                                 saque = double.Parse(Console.ReadLine());
-                                saldo -= saque;
+                                saldos[result] -= saque;
                                 Console.WriteLine("Sque realizado com sucesso...");
-                                Console.WriteLine($"{nome} Saldo atual é R$ {saldo}\n");
+                                Console.WriteLine($"{titulares[result]} Saldo atual é R$ {saldos[result]}\n");
                                 retornoEncerrar(); opcao = int.Parse(Console.ReadLine());
+                                Console.Clear();
 
                             }       // Area de transferencia ok 
                             else if (opcao == 3)
                             {
-                                Console.WriteLine("Para quem a transferencia sera enviada ?");
-                                Console.Write("NOME: ");
-                                string nomeTransferencia = Console.ReadLine();
-                                Console.WriteLine($"{nome} Qual valor da tranferencia?");
+                                Console.WriteLine("Digite o cpf para quem a transferencia sera enviada ?");
+                                Console.Write("CPF: ");
+                                string cpfTransferencia = Console.ReadLine();
+                                int transfer = cpfs.FindIndex(x => x == cpfTransferencia);
+
+                                while (transfer == -1 || cpfTransferencia == cpfs[result])
+                                {
+                                    Console.WriteLine("Usuario invalido, Tente novamente");
+                                    cpfTransferencia = Console.ReadLine();
+                                    transfer = cpfs.FindIndex(x => x == cpfTransferencia);
+                                }
+
+                                Console.WriteLine($"{titulares[result]} Qual valor da tranferencia?");
                                 Console.Write("R$ ");
                                 transferencia = double.Parse(Console.ReadLine());
-                                Console.WriteLine($"Transferencia de {transferencia} para {nomeTransferencia} confirma ? (s) ou (n) ");
-                                string resposta = Console.ReadLine();                                                                     // usar variavel char
+                                Console.WriteLine($"Transferencia de {transferencia} para {titulares[transfer]} confirma ? (s) ou (n) ");
+                                string resposta = Console.ReadLine();
+                                Console.Clear();                                                // usar variavel char
                                 if (resposta == "s")
                                 {
-                                    saldo -= transferencia;
+                                    saldos[result] -= transferencia;
+                                    saldos[transfer] += transferencia;
                                     Console.WriteLine("Transferencia realizada com sucesso");
-                                    Console.WriteLine($"{nome} Saldo atual é R$ {saldo}\n");
+                                    Console.WriteLine($"{titulares[result]} Saldo atual é R$ {saldos[result]}\n");
                                     retornoEncerrar(); opcao = int.Parse(Console.ReadLine());
+                                    Console.Clear();
                                 }
                                 else
                                 {
                                     Console.WriteLine("Transferencia nao efetivada");
-                                    Console.WriteLine($"Saldo atual é R$ {saldo}\n");
+                                    Console.WriteLine($"Saldo atual é R$ {saldos[result]}\n");
                                     retornoEncerrar(); opcao = int.Parse(Console.ReadLine());
+                                    Console.Clear();
                                 }
                             }
                             else if (opcao == 4)  // Area de deposito ok confirmar depois upgrade//
                             {
-                                Console.WriteLine($"{nome} Qual valor do deposito ?");
+                                Console.WriteLine($"{titulares[result]} Qual valor do deposito ?");
                                 Console.Write("R$ ");
                                 deposito = double.Parse(Console.ReadLine());
-                                saldo += deposito;
-                                Console.WriteLine($"{nome} Saldo atual é R$ {saldo}\n");
+                                saldos[result] += deposito;
+                                Console.WriteLine($"{titulares[result]} Saldo atual é R$ {saldos[result]}\n");
                                 retornoEncerrar(); opcao = int.Parse(Console.ReadLine());
+                                Console.Clear();
                             }
                             //Area de Investimentos ok
                             else if (opcao == 5)
@@ -263,10 +294,11 @@ public class Program
                                 double poupanca = valorInvestido * 0.005 * tempoInvestido;
                                 double rendaVariavel = valorInvestido * 0.01 * tempoInvestido;
                                 double fundosImobiliarios = valorInvestido * 0.015 * tempoInvestido;
-                                Console.WriteLine($"{nome} se investido em poupanca o retorno sera de R$ {poupanca} = Totalizando R$ {valorInvestido + poupanca}...");
+                                Console.WriteLine($"{titulares[result]} se investido em poupanca o retorno sera de R$ {poupanca} = Totalizando R$ {valorInvestido + poupanca}...");
                                 Console.WriteLine($"Se investido em renda variavel o retorno sera de R$ {rendaVariavel} = Totalizando R$ {valorInvestido + rendaVariavel}...");
                                 Console.WriteLine($"Se investido em fundos imobiliarios o retorno sera de R$ {fundosImobiliarios} = Totalizando  R$ {valorInvestido + fundosImobiliarios}...\n -----------------------------------");
                                 retornoEncerrar(); opcao = int.Parse(Console.ReadLine());
+                                Console.Clear();
 
                             }
 
@@ -277,7 +309,8 @@ public class Program
                                 int crypto = int.Parse(Console.ReadLine());
                                 Console.WriteLine("Quantos reais quer usar par comprar ?");
                                 double valor = double.Parse(Console.ReadLine());
-                                saldo -= valor;
+
+                                saldos[result] -= valor;
 
                                 if (crypto == 1)
                                 {
@@ -294,7 +327,7 @@ public class Program
                                     Console.WriteLine($"Voce acaba de comprar N¢ {valor / 15.46} de Newcoin");
                                     Newcoin = valor / 15.46;
                                 }
-                                Console.WriteLine($"Saldo atual é R$ {saldo}\n");
+                                Console.WriteLine($"Saldo atual é R$ {saldos[result]}\n");
                                 retornoEncerrar(); opcao = int.Parse(Console.ReadLine());
                             }
                             else if (opcao == 7)
@@ -371,7 +404,7 @@ public class Program
                                     }
                                 } while (opcao < 0 || opcao > 9);
                             }
-                            
+
 
                         } while (opcao != 8);
                     }
