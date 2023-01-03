@@ -1,5 +1,7 @@
 ﻿using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Drawing;
 using System.Security.Cryptography;
 
 public class program
@@ -75,14 +77,16 @@ public class program
               "      2   5   8  \n" +
               "     ---│---│--- \n" +
               "      3   6   9  \n");
+
         do
         {
-
+      
             proximo++;
             proximo2 += 2;
             jog1 += 2;
             jog2 += 2;
 
+                inicio:
             do
             {
                 pontuacao = 0;
@@ -97,10 +101,10 @@ public class program
                 "      2   5   8  \n" +
                 "     ---│---│--- \n" +
                 "      3   6   9  \n");
-
                 Console.ForegroundColor = ConsoleColor.Green;
                 if (jogador % 2 == 1)
                 {
+                    
                     Console.WriteLine();
                     Console.WriteLine($"Vez do jogador {jog1}");
                 }
@@ -109,7 +113,6 @@ public class program
                     Console.WriteLine();
                     Console.WriteLine($"Vez do jogador {jog2}");
                 }
-
                 if (number >= 1 && number < 4)
                 {
                     l = number - 1;
@@ -331,12 +334,27 @@ public class program
                     empates[proximo2]++;
                     pontuacao++;
                 }
+
             } while (pontuacao == 0);
 
             quantidadeJogadas = 0;
             menuPlacar();
             opcao = int.Parse(Console.ReadLine());
             Console.Clear();
+
+            if (opcao == 3)
+            {
+                for (int i = 0; i < vitorias.Count; i++)
+                {
+                    if (vitorias[i] > 0)
+                    {
+                        string posicao = jogadores[i];
+                        Console.WriteLine("jogador " + posicao);
+                    }
+                }
+                Console.WriteLine("Passam para proxima etapa");
+                goto inicio;
+            }
             if (opcao == 1)
             {
 
