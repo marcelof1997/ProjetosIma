@@ -15,7 +15,7 @@ namespace NewBank
             Console.WriteLine("Quantidade de usuarios armazenada no banco -(7)");
             Console.WriteLine("Sair do sistema ----------------------------(9)");
             Console.Write("Digite a opcao desejada : ");
-        }
+        } // ok
         static void menu()         //funcao menu principal funcionando//
         {
             Console.WriteLine("         Escolha uma das opcoes abaixo           ");
@@ -53,20 +53,27 @@ namespace NewBank
             senhas.Add(Console.ReadLine());
             Console.WriteLine();
             saldos.Add(0);
-        }
+        } // ok
         static void ListarTodasAsContas(List<string> cpfs, List<string> titulares, List<double> saldos)
         {
             for (int i = 0; i < cpfs.Count; i++)
             {
                 Console.WriteLine($"CPF = {cpfs[i]} | Titular = {titulares[i]} | Saldo = R${saldos[i]:F2}");
             }
+        }     // listar contas ok
+
+        public static void cpfNaoEncontrado()
+        {
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("CPF nao encontrado na base de dados\n");
+            Console.ForegroundColor = ConsoleColor.Green;
         }
 
         static void nomeBanco()
         {
             Console.WriteLine("\r\n /$$   /$$                               /$$$$$$$                      /$$      \r\n| $$$ | $$                              | $$__  $$                    | $$      \r\n| $$$$| $$  /$$$$$$  /$$  /$$  /$$      | $$  \\ $$  /$$$$$$  /$$$$$$$ | $$   /$$\r\n| $$ $$ $$ /$$__  $$| $$ | $$ | $$      | $$$$$$$  |____  $$| $$__  $$| $$  /$$/\r\n| $$  $$$$| $$$$$$$$| $$ | $$ | $$      | $$__  $$  /$$$$$$$| $$  \\ $$| $$$$$$/ \r\n| $$\\  $$$| $$_____/| $$ | $$ | $$      | $$  \\ $$ /$$__  $$| $$  | $$| $$_  $$ \r\n| $$ \\  $$|  $$$$$$$|  $$$$$/$$$$/      | $$$$$$$/|  $$$$$$$| $$  | $$| $$ \\  $$\r\n|__/  \\__/ \\_______/ \\_____/\\___/       |_______/  \\_______/|__/  |__/|__/  \\__/\r\n                                                                                \r\n                                                                                \r\n                                                                                \r\n");
 
-        }
+        }          // nome do bank ok
         static void Main(string[] args)
         {
             double totalDeSaldos = 0;
@@ -98,7 +105,7 @@ namespace NewBank
                         Console.WriteLine();
                         Console.Clear();
                         if (opcaoPrincipal < 0 || opcaoPrincipal > 9 || opcaoPrincipal == 8) { Console.WriteLine("Opcao invalida\n"); }
-                    } while (opcaoPrincipal < 0 || opcaoPrincipal > 9 || opcaoPrincipal == 8);
+                    } while (opcaoPrincipal < 0 || opcaoPrincipal > 9 || opcaoPrincipal == 8);                                 // ok
 
 
                     if (opcaoPrincipal == 1)
@@ -107,58 +114,68 @@ namespace NewBank
                         {
                             RegistrarNovoUsusario(cpfs, titulares, senhas, saldos);
                         }
-                    }
+                    }          //ok
                     if (opcaoPrincipal == 2)
                     {
-                        Console.WriteLine("Qual o cpf do usuario que sera deletado ?");
-                        cpfs.Remove(Console.ReadLine());
+                        Console.WriteLine("Qual o cpf do usuario que sera deletado ?");     // e se o cpf nao existir mostrar menssagem de erro
+                        string remove = Console.ReadLine();
+                        int cpfARemover = cpfs.FindIndex(x => x == remove);
 
-                        menuPrincipal();                                  //Menu principal
-                        opcaoPrincipal = int.Parse(Console.ReadLine());
-                        Console.WriteLine();
-                        Console.Clear();
-                    }
+                        if (cpfARemover == -1)
+                        {
+                            cpfNaoEncontrado();
+                        }       //ok
+                        else
+                        {
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine("CPF removido com sucesso\n");
+                            Console.ForegroundColor = ConsoleColor.Green;
+                        }
+
+                    }         //ok
                     if (opcaoPrincipal == 3)
                     {
                         ListarTodasAsContas(cpfs, titulares, saldos);
-                        menuPrincipal();                                  //Menu principal
-                        opcaoPrincipal = int.Parse(Console.ReadLine());
                         Console.WriteLine();
-                        Console.Clear();
-                    }
+                    }        //ok
                     if (opcaoPrincipal == 4)
                     {
                         Console.Write("Qual o CPF do usuario : ");
-                        int cpf = cpfs.IndexOf(Console.ReadLine());                                                                   // procurando cpf ok
-                        Console.WriteLine($"CPF = {cpfs[cpf]} | Titular = {titulares[cpf]} | Saldo = R${saldos[cpf]:F2}");
+                        int cpf = cpfs.IndexOf(Console.ReadLine());                                                                   // ok
 
-                        menuPrincipal();                                  //Menu principal
-                        opcaoPrincipal = int.Parse(Console.ReadLine());
-                        Console.WriteLine();
-                    }
+                        if (cpf == -1)
+                        {
+                            cpfNaoEncontrado();
+                        }     
+                        else
+                        {
+                            Console.WriteLine($"CPF = {cpfs[cpf]} | Titular = {titulares[cpf]} | Saldo = R${saldos[cpf]:F2}");
+                        }
+
+                    }        //ok
                     if (opcaoPrincipal == 5)
                     {
                         for (int i = 0; i < cpfs.Count; i++)
                         {
                             totalDeSaldos = totalDeSaldos + saldos[i];
                         }
-                            Console.WriteLine($"Quantia Armazenada no banco é R${totalDeSaldos}");                           
-                            totalDeSaldos = 0;
-                    }
-                        if (opcaoPrincipal == 7)
+                        Console.WriteLine($"Quantia Armazenada no banco é R${totalDeSaldos}");
+                        totalDeSaldos = 0;
+                    }        //ok
+                    if (opcaoPrincipal == 7)
+                    {
+                        for (int i = 0; i < cpfs.Count; i++)
                         {
-                            for (int i = 0; i < cpfs.Count; i++)
-                            {
-                                quantidade++;
-                            }
-                                Console.WriteLine($"A quantidade armazenada no banco é de {quantidade} usuarios");
-                                quantidade = 0;
+                            quantidade++;
                         }
-                    
+                        Console.WriteLine($"A quantidade armazenada no banco é de {quantidade} usuarios");
+                        quantidade = 0;
+                    }        //ok
+
                 } while (opcaoPrincipal != 6 && opcaoPrincipal != 9);
 
                 if (opcaoPrincipal == 9)
-                { Console.WriteLine("Encerrando sistema ...."); }
+                { Console.WriteLine("Encerrando sistema ...."); }             //ok
 
                 if (opcaoPrincipal == 6)
                 {
@@ -261,7 +278,7 @@ namespace NewBank
                                         Console.Clear();
                                     }
                                 }
-                                else if (opcao == 4)  // Area de deposito ok confirmar depois upgrade//
+                                else if (opcao == 4)                                 // Area de deposito ok confirmar depois upgrade//
                                 {
                                     Console.WriteLine($"{titulares[result]} Qual valor do deposito ?");
                                     Console.Write("R$ ");
@@ -401,7 +418,7 @@ namespace NewBank
                 }
             } while (opcaoPrincipal != 9);
         }
-
+        
     }
 
 }
