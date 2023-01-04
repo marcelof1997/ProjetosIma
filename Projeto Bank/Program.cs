@@ -1,4 +1,7 @@
 ﻿
+using System.Security.Cryptography;
+using static System.Net.Mime.MediaTypeNames;
+
 namespace NewBank
 {
     public class Program
@@ -32,9 +35,11 @@ namespace NewBank
         }
         static void opcaoInvalida()       //funcao opcaoInvalida funcionando//
         {
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("________________________________");
             Console.WriteLine("│Opcao invalida tente novamente│");
             Console.WriteLine("--------------------------------\n");
+            Console.ForegroundColor = ConsoleColor.Green;
         }
 
         static void retornoEncerrar()                  //funcao retorno funcionando ok 
@@ -61,28 +66,66 @@ namespace NewBank
                 Console.WriteLine($"CPF = {cpfs[i]} | Titular = {titulares[i]} | Saldo = R${saldos[i]:F2}");
             }
         }     // listar contas ok
-
         public static void cpfNaoEncontrado()
         {
-            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.BackgroundColor= ConsoleColor.Green;
+            Console.ForegroundColor = ConsoleColor.Black;
             Console.WriteLine("CPF nao encontrado na base de dados\n");
             Console.ForegroundColor = ConsoleColor.Green;
+            Console.BackgroundColor= ConsoleColor.Black;
         }
 
-        static void nomeBanco()
+      /*  static void nomeBanco()
         {
-            Console.WriteLine("\r\n /$$   /$$                               /$$$$$$$                      /$$      \r\n| $$$ | $$                              | $$__  $$                    | $$      \r\n| $$$$| $$  /$$$$$$  /$$  /$$  /$$      | $$  \\ $$  /$$$$$$  /$$$$$$$ | $$   /$$\r\n| $$ $$ $$ /$$__  $$| $$ | $$ | $$      | $$$$$$$  |____  $$| $$__  $$| $$  /$$/\r\n| $$  $$$$| $$$$$$$$| $$ | $$ | $$      | $$__  $$  /$$$$$$$| $$  \\ $$| $$$$$$/ \r\n| $$\\  $$$| $$_____/| $$ | $$ | $$      | $$  \\ $$ /$$__  $$| $$  | $$| $$_  $$ \r\n| $$ \\  $$|  $$$$$$$|  $$$$$/$$$$/      | $$$$$$$/|  $$$$$$$| $$  | $$| $$ \\  $$\r\n|__/  \\__/ \\_______/ \\_____/\\___/       |_______/  \\_______/|__/  |__/|__/  \\__/\r\n                                                                                \r\n                                                                                \r\n                                                                                \r\n");
+            Console.WriteLine("\r\n /$$   /$$                               /$$$$$$$                      /$$      " +
+                              "\r\n| $$$ | $$                              | $$__  $$                    | $$      " +
+                              "\r\n| $$$$| $$  /$$$$$$  /$$  /$$  /$$      | $$  \\ $$  /$$$$$$  /$$$$$$$ | $$   /$$" +
+                              "\r\n| $$ $$ $$ /$$__  $$| $$ | $$ | $$      | $$$$$$$  |____  $$| $$__  $$| $$  /$$/" +
+                              "\r\n| $$  $$$$| $$$$$$$$| $$ | $$ | $$      | $$__  $$  /$$$$$$$| $$  \\ $$| $$$$$$/ " +
+                              "\r\n| $$\\  $$$| $$_____/| $$ | $$ | $$      | $$  \\ $$ /$$__  $$| $$  | $$| $$_  $$ " +
+                              "\r\n| $$ \\  $$|  $$$$$$$|  $$$$$/$$$$/      | $$$$$$$/|  $$$$$$$| $$  | $$| $$ \\  $$" +
+                              "\r\n|__/  \\__/ \\_______/ \\_____/\\___/       |_______/  \\_______/|__/  |__/|__/  \\__/" +
+                              "\r\n                                                                                " +
+                              "\r\n                                                                                " +
+                              "\r\n                                                                                " +
+                              "\r\n");
 
-        }          // nome do bank ok
+        }          // nome do bank ok*/
+
+        static void lentidao(string text)
+        {
+            foreach (char l in text)
+            {
+                Console.Write(l);
+                Thread.Sleep(100); // adiciona um atraso de 100 milissegundos entre cada iteração
+            }
+        }
         static void Main(string[] args)
         {
             double totalDeSaldos = 0;
             int opcaoPrincipal;
             int quantidade = 0;
             Console.ForegroundColor = ConsoleColor.Green;
-
-            nomeBanco();
-
+            int n = 0;
+            string text = "------------------------------------------------------------------------------------------------------------------------\n" +
+                              "\r\n /$$   /$$                               /$$$$$$$                      /$$      " +
+                              "\r\n| $$$ | $$                              | $$__  $$                    | $$      " +
+                              "\r\n| $$$$| $$  /$$$$$$  /$$  /$$  /$$      | $$  \\ $$  /$$$$$$  /$$$$$$$ | $$   /$$" +
+                              "\r\n| $$ $$ $$ /$$__  $$| $$ | $$ | $$      | $$$$$$$  |____  $$| $$__  $$| $$  /$$/" +
+                              "\r\n| $$  $$$$| $$$$$$$$| $$ | $$ | $$      | $$__  $$  /$$$$$$$| $$  \\ $$| $$$$$$/ " +
+                              "\r\n| $$\\  $$$| $$_____/| $$ | $$ | $$      | $$  \\ $$ /$$__  $$| $$  | $$| $$_  $$ " +
+                              "\r\n| $$ \\  $$|  $$$$$$$|  $$$$$/$$$$/      | $$$$$$$/|  $$$$$$$| $$  | $$| $$ \\  $$" +
+                              "\r\n|__/  \\__/ \\_______/ \\_____/\\___/       |_______/  \\_______/|__/  |__/|__/  \\__/" +
+                              "\r\n                                                                                " ;
+                              
+            foreach (char l in text)
+            {
+               Console.Write(l);
+                Thread.Sleep(1);
+            }
+            Console.WriteLine();
+            //nomeBanco();
+            Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
             Console.WriteLine("Vamos configurar o sitema ");
 
             Console.Write("Digite a quantidade de usuarios : ");
@@ -104,7 +147,7 @@ namespace NewBank
                         opcaoPrincipal = int.Parse(Console.ReadLine());
                         Console.WriteLine();
                         Console.Clear();
-                        if (opcaoPrincipal < 0 || opcaoPrincipal > 9 || opcaoPrincipal == 8) { Console.WriteLine("Opcao invalida\n"); }
+                        if (opcaoPrincipal < 0 || opcaoPrincipal > 9 || opcaoPrincipal == 8) { opcaoInvalida(); Console.WriteLine(); }
                     } while (opcaoPrincipal < 0 || opcaoPrincipal > 9 || opcaoPrincipal == 8);                                 // ok
 
 
@@ -113,16 +156,19 @@ namespace NewBank
                         for (int i = 0; i < quantidadeDeUsuarios; i++)
                         {
                             RegistrarNovoUsusario(cpfs, titulares, senhas, saldos);
+                            
                         }
                     }          //ok
                     if (opcaoPrincipal == 2)
                     {
-                        Console.WriteLine("Qual o cpf do usuario que sera deletado ?");     // e se o cpf nao existir mostrar menssagem de erro
+                        Console.WriteLine("Qual o cpf do usuario que sera deletado ?");  
                         string remove = Console.ReadLine();
                         int cpfARemover = cpfs.FindIndex(x => x == remove);
+                        
 
                         if (cpfARemover == -1)
                         {
+                            Console.WriteLine();
                             cpfNaoEncontrado();
                         }       //ok
                         else
@@ -187,28 +233,55 @@ namespace NewBank
 
                     int result = cpfs.FindIndex(x => x == cod);
 
-                    while (result == -1)
+                        int acess = 0;
+                    while (result == -1 && acess != 2)
                     {
+                        Console.ForegroundColor= ConsoleColor.Red;
                         Console.WriteLine("\nCPF incorreta*");
+                        Console.ForegroundColor= ConsoleColor.Green;
                         cod = Console.ReadLine();
                         result = cpfs.FindIndex(x => x == cod);
+                        acess++;
+                        Console.Clear();
                     }
-                    if (result >= 0 && result < cpfs.Count)
+                    if (result >= 0 && result < cpfs.Count)            
                     {
+                        acess= 0;
                         Console.WriteLine("CPF aceito\n");
                         Console.WriteLine("Digite a senha ");
                         Console.Write("***");
+                        Console.ForegroundColor = ConsoleColor.Black;
                         string senhaInformada = Console.ReadLine();
+                        Console.ForegroundColor = ConsoleColor.Green;
+
+                            while (senhaInformada != senhas[result] && acess != 2) 
+                        {
+                            Console.ForegroundColor= ConsoleColor.Red;
+                            Console.WriteLine("Senha invalida");
+                            Console.ForegroundColor= ConsoleColor.Black;
+                            senhaInformada = Console.ReadLine();
+                            Console.Clear();
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            acess++;
+                        }
+                        if (acess >= 2)
+                        {  
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine("TENTATIVAS EXCEDIDAS\n");
+                            Console.ForegroundColor =  ConsoleColor.Green;
+                        }
 
                         if (senhas[result] == senhaInformada)
                         {
+                            acess= 0;
                             Console.WriteLine("Senha Aceita\n");
+                            Console.Clear();
                             Console.WriteLine("-------------------------------------------------");
                             Console.WriteLine("*******OLA SEJA BEM VINDO(A) AO NEW BANK*********");
                             Console.WriteLine("-------------------------------------------------");
-                            string nome = (titulares[result]);
-
-                            do     // returno confirmar//
+                            string nome = (titulares[result]);                       
+                           
+                            do                                                   
                             {
                                 menu();
                                 opcao = int.Parse(Console.ReadLine());
@@ -218,7 +291,7 @@ namespace NewBank
                                 {
                                     opcaoInvalida();
                                 }
-                            } while (opcao > 9 || opcao < 0);
+                            } while (opcao > 9 || opcao < 0);                                             // nao precisa desse retorno
 
                             do
                             {
@@ -287,7 +360,7 @@ namespace NewBank
                                     Console.WriteLine($"{titulares[result]} Saldo atual é R$ {saldos[result]}\n");
                                     retornoEncerrar(); opcao = int.Parse(Console.ReadLine());
                                     Console.Clear();
-                                }
+                                }     //ok
                                 //Area de Investimentos ok
                                 else if (opcao == 5)
                                 {
@@ -392,26 +465,13 @@ namespace NewBank
                                 {
                                     do
                                     {
-                                        menu(); opcao = int.Parse(Console.ReadLine());
+                                        menu(); opcao = int.Parse(Console.ReadLine());   
                                         if (opcao > 9 || opcao < 0)
                                         {
                                             opcaoInvalida();
                                         }
-                                    } while (opcao > 9 || opcao < 0);
+                                    } while (opcao > 9 || opcao < 0);  // retorno ok
                                 }
-                                else if (opcao < 0 || opcao > 9)
-                                {
-                                    do                    // retorno ok funcionando tudo certo//
-                                    {
-                                        menu(); opcao = int.Parse(Console.ReadLine());
-                                        if (opcao > 9 || opcao < 0)
-                                        {
-                                            opcaoInvalida();
-                                        }
-                                    } while (opcao < 0 || opcao > 9);
-                                }
-
-
                             } while (opcao != 8);
                         }
                     }

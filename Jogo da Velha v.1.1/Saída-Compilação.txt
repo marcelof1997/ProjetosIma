@@ -1,0 +1,6 @@
+﻿Compilação iniciada...
+1>------ Compilação iniciada: Projeto: Jogo da Velha v.1.1, Configuração: Debug Any CPU ------
+1>Ignorando analisadores para acelerar a construção. Você pode executar o comando 'Build' ou 'Rebuild' para executar os analisadores.
+1>Jogo da Velha v.1.1 -> C:\dev\Jogo da velha v.1.1\bin\Debug\net6.0\Jogo da Velha v.1.1.dll
+========== Compilação: 1 bem-sucedida, 0 com falha, 0 atualizada, 0 ignorada ==========
+=========== Decorrido 00:04,324 =========

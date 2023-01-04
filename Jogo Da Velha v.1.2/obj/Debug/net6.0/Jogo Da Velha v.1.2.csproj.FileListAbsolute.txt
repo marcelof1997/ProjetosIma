@@ -1,0 +1,15 @@
+C:\dev\Jogo Da Velha v.1.2\bin\Debug\net6.0\Jogo Da Velha v.1.2.exe
+C:\dev\Jogo Da Velha v.1.2\bin\Debug\net6.0\Jogo Da Velha v.1.2.deps.json
+C:\dev\Jogo Da Velha v.1.2\bin\Debug\net6.0\Jogo Da Velha v.1.2.runtimeconfig.json
+C:\dev\Jogo Da Velha v.1.2\bin\Debug\net6.0\Jogo Da Velha v.1.2.dll
+C:\dev\Jogo Da Velha v.1.2\bin\Debug\net6.0\Jogo Da Velha v.1.2.pdb
+C:\dev\Jogo Da Velha v.1.2\obj\Debug\net6.0\Jogo Da Velha v.1.2.csproj.AssemblyReference.cache
+C:\dev\Jogo Da Velha v.1.2\obj\Debug\net6.0\Jogo Da Velha v.1.2.GeneratedMSBuildEditorConfig.editorconfig
+C:\dev\Jogo Da Velha v.1.2\obj\Debug\net6.0\Jogo Da Velha v.1.2.AssemblyInfoInputs.cache
+C:\dev\Jogo Da Velha v.1.2\obj\Debug\net6.0\Jogo Da Velha v.1.2.AssemblyInfo.cs
+C:\dev\Jogo Da Velha v.1.2\obj\Debug\net6.0\Jogo Da Velha v.1.2.csproj.CoreCompileInputs.cache
+C:\dev\Jogo Da Velha v.1.2\obj\Debug\net6.0\Jogo Da Velha v.1.2.dll
+C:\dev\Jogo Da Velha v.1.2\obj\Debug\net6.0\refint\Jogo Da Velha v.1.2.dll
+C:\dev\Jogo Da Velha v.1.2\obj\Debug\net6.0\Jogo Da Velha v.1.2.pdb
+C:\dev\Jogo Da Velha v.1.2\obj\Debug\net6.0\Jogo Da Velha v.1.2.genruntimeconfig.cache
+C:\dev\Jogo Da Velha v.1.2\obj\Debug\net6.0\ref\Jogo Da Velha v.1.2.dll

@@ -1,0 +1,5 @@
+C:\dev\test jog\obj\Debug\net6.0\test jog.csproj.AssemblyReference.cache
+C:\dev\test jog\obj\Debug\net6.0\test jog.GeneratedMSBuildEditorConfig.editorconfig
+C:\dev\test jog\obj\Debug\net6.0\test jog.AssemblyInfoInputs.cache
+C:\dev\test jog\obj\Debug\net6.0\test jog.AssemblyInfo.cs
+C:\dev\test jog\obj\Debug\net6.0\test jog.csproj.CoreCompileInputs.cache
