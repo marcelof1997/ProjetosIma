@@ -103,6 +103,20 @@ namespace NewBank
             Console.WriteLine();
             nomeBanco();
             Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
+            string cont = "......................................................................................................";
+            for (int i = 0; i <cont.Length; i++) 
+            {
+                Console.BackgroundColor = ConsoleColor.Green;
+                Console.ForegroundColor = ConsoleColor.Black;
+                Console.Write($"Progress {i}% ");
+                Console.ResetColor();
+
+                cont = cont.Substring(0, i) + "#" + cont.Substring(i + 1);
+                Console.WriteLine(cont);                
+                Thread.Sleep(30);
+                Console.Clear();
+            }
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Vamos configurar o sitema ");
 
             Console.Write("Digite a quantidade de usuarios : ");
