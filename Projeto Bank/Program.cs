@@ -55,7 +55,9 @@ namespace NewBank
             Console.Write("Digite o titular: ");
             titulares.Add(Console.ReadLine());
             Console.Write("Digite a senha: ");
+            Console.ForegroundColor = ConsoleColor.Black;
             senhas.Add(Console.ReadLine());
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine();
             saldos.Add(0);
         } // ok
@@ -75,31 +77,20 @@ namespace NewBank
             Console.BackgroundColor= ConsoleColor.Black;
         }
 
-      /*  static void nomeBanco()
+        static void nomeBanco()
         {
-            Console.WriteLine("\r\n /$$   /$$                               /$$$$$$$                      /$$      " +
-                              "\r\n| $$$ | $$                              | $$__  $$                    | $$      " +
-                              "\r\n| $$$$| $$  /$$$$$$  /$$  /$$  /$$      | $$  \\ $$  /$$$$$$  /$$$$$$$ | $$   /$$" +
-                              "\r\n| $$ $$ $$ /$$__  $$| $$ | $$ | $$      | $$$$$$$  |____  $$| $$__  $$| $$  /$$/" +
-                              "\r\n| $$  $$$$| $$$$$$$$| $$ | $$ | $$      | $$__  $$  /$$$$$$$| $$  \\ $$| $$$$$$/ " +
-                              "\r\n| $$\\  $$$| $$_____/| $$ | $$ | $$      | $$  \\ $$ /$$__  $$| $$  | $$| $$_  $$ " +
-                              "\r\n| $$ \\  $$|  $$$$$$$|  $$$$$/$$$$/      | $$$$$$$/|  $$$$$$$| $$  | $$| $$ \\  $$" +
-                              "\r\n|__/  \\__/ \\_______/ \\_____/\\___/       |_______/  \\_______/|__/  |__/|__/  \\__/" +
-                              "\r\n                                                                                " +
-                              "\r\n                                                                                " +
-                              "\r\n                                                                                " +
+            Console.WriteLine("\r\n /$$$$$$$  /$$     /$$/$$$$$$$$/$$$$$$$$       /$$$$$$$   /$$$$$$  /$$   /$$ /$$   /$$" +
+                              "\r\n| $$__  $$|  $$   /$$/__  $$__/ $$_____/      | $$__  $$ /$$__  $$| $$$ | $$| $$  /$$/" +
+                              "\r\n| $$  \\ $$ \\  $$ /$$/   | $$  | $$            | $$  \\ $$| $$  \\ $$| $$$$| $$| $$ /$$/ " +
+                              "\r\n| $$$$$$$   \\  $$$$/    | $$  | $$$$$         | $$$$$$$ | $$$$$$$$| $$ $$ $$| $$$$$/  " +
+                              "\r\n| $$__  $$   \\  $$/     | $$  | $$__/         | $$__  $$| $$__  $$| $$  $$$$| $$  $$  " +
+                              "\r\n| $$  \\ $$    | $$      | $$  | $$            | $$  \\ $$| $$  | $$| $$\\  $$$| $$\\  $$ " +
+                              "\r\n| $$$$$$$/    | $$      | $$  | $$$$$$$$      | $$$$$$$/| $$  | $$| $$ \\  $$| $$ \\  $$" +
+                              "\r\n|_______/     |__/      |__/  |________/      |_______/ |__/  |__/|__/  \\__/|__/  \\__/" +                  
                               "\r\n");
 
-        }          // nome do bank ok*/
+        }          // nome do bank ok
 
-        static void lentidao(string text)
-        {
-            foreach (char l in text)
-            {
-                Console.Write(l);
-                Thread.Sleep(100); // adiciona um atraso de 100 milissegundos entre cada iteração
-            }
-        }
         static void Main(string[] args)
         {
             double totalDeSaldos = 0;
@@ -107,24 +98,10 @@ namespace NewBank
             int quantidade = 0;
             Console.ForegroundColor = ConsoleColor.Green;
             int n = 0;
-            string text = "------------------------------------------------------------------------------------------------------------------------\n" +
-                              "\r\n /$$   /$$                               /$$$$$$$                      /$$      " +
-                              "\r\n| $$$ | $$                              | $$__  $$                    | $$      " +
-                              "\r\n| $$$$| $$  /$$$$$$  /$$  /$$  /$$      | $$  \\ $$  /$$$$$$  /$$$$$$$ | $$   /$$" +
-                              "\r\n| $$ $$ $$ /$$__  $$| $$ | $$ | $$      | $$$$$$$  |____  $$| $$__  $$| $$  /$$/" +
-                              "\r\n| $$  $$$$| $$$$$$$$| $$ | $$ | $$      | $$__  $$  /$$$$$$$| $$  \\ $$| $$$$$$/ " +
-                              "\r\n| $$\\  $$$| $$_____/| $$ | $$ | $$      | $$  \\ $$ /$$__  $$| $$  | $$| $$_  $$ " +
-                              "\r\n| $$ \\  $$|  $$$$$$$|  $$$$$/$$$$/      | $$$$$$$/|  $$$$$$$| $$  | $$| $$ \\  $$" +
-                              "\r\n|__/  \\__/ \\_______/ \\_____/\\___/       |_______/  \\_______/|__/  |__/|__/  \\__/" +
-                              "\r\n                                                                                " ;
-                              
-            foreach (char l in text)
-            {
-               Console.Write(l);
-                Thread.Sleep(1);
-            }
+
+            Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
             Console.WriteLine();
-            //nomeBanco();
+            nomeBanco();
             Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
             Console.WriteLine("Vamos configurar o sitema ");
 
@@ -147,7 +124,7 @@ namespace NewBank
                         opcaoPrincipal = int.Parse(Console.ReadLine());
                         Console.WriteLine();
                         Console.Clear();
-                        if (opcaoPrincipal < 0 || opcaoPrincipal > 9 || opcaoPrincipal == 8) { opcaoInvalida(); Console.WriteLine(); }
+                        if (opcaoPrincipal < 0 || opcaoPrincipal > 9 || opcaoPrincipal == 8 ) { opcaoInvalida(); Console.WriteLine(); }
                     } while (opcaoPrincipal < 0 || opcaoPrincipal > 9 || opcaoPrincipal == 8);                                 // ok
 
 
@@ -156,7 +133,6 @@ namespace NewBank
                         for (int i = 0; i < quantidadeDeUsuarios; i++)
                         {
                             RegistrarNovoUsusario(cpfs, titulares, senhas, saldos);
-                            
                         }
                     }          //ok
                     if (opcaoPrincipal == 2)
@@ -165,7 +141,6 @@ namespace NewBank
                         string remove = Console.ReadLine();
                         int cpfARemover = cpfs.FindIndex(x => x == remove);
                         
-
                         if (cpfARemover == -1)
                         {
                             Console.WriteLine();
@@ -173,6 +148,7 @@ namespace NewBank
                         }       //ok
                         else
                         {
+                            cpfs.Remove(remove);
                             Console.ForegroundColor = ConsoleColor.Red;
                             Console.WriteLine("CPF removido com sucesso\n");
                             Console.ForegroundColor = ConsoleColor.Green;
@@ -205,7 +181,7 @@ namespace NewBank
                         {
                             totalDeSaldos = totalDeSaldos + saldos[i];
                         }
-                        Console.WriteLine($"Quantia Armazenada no banco é R${totalDeSaldos}");
+                        Console.WriteLine($"Quantia Armazenada no banco é R${totalDeSaldos:F2}");
                         totalDeSaldos = 0;
                     }        //ok
                     if (opcaoPrincipal == 7)
@@ -277,7 +253,7 @@ namespace NewBank
                             Console.WriteLine("Senha Aceita\n");
                             Console.Clear();
                             Console.WriteLine("-------------------------------------------------");
-                            Console.WriteLine("*******OLA SEJA BEM VINDO(A) AO NEW BANK*********");
+                            Console.WriteLine("*******OLA SEJA BEM VINDO(A) AO BYTE BANK*********");
                             Console.WriteLine("-------------------------------------------------");
                             string nome = (titulares[result]);                       
                            
@@ -297,19 +273,26 @@ namespace NewBank
                             {
                                 if (opcao == 1)  // saldo ok upgrade//
                                 {
-                                    Console.WriteLine($"{titulares[result]} Seu saldo atual é R$ {saldos[result]}\n");
-                                    Console.WriteLine($"Voce tem de Breackcoin B¢ {Breackcoin}\nMeccoin M¢ {Meccoin}\nNewcoin N¢ {Newcoin}");
+                                    Console.WriteLine($"{titulares[result]} Seu saldo atual é R$ {saldos[result]:F2}\n");
+                                    Console.WriteLine("Suas criptomoedas:");
+                                    Console.WriteLine($"Breackcoin B¢ {Breackcoin:F2}\nMeccoin M¢ {Meccoin:F2}\nNewcoin N¢ {Newcoin:F2}");
                                     retornoEncerrar(); opcao = int.Parse(Console.ReadLine());
                                     Console.Clear();
                                 }
                                 else if (opcao == 2)    // Area saque ok confirmar upgrade//
                                 {
+                                    
                                     Console.WriteLine($"{titulares[result]} Qual valor do saque ?");
                                     Console.Write("R$ ");
                                     saque = double.Parse(Console.ReadLine());
+                                    while (saque <= 0)
+                                    {
+                                        Console.WriteLine("Valor invalido, tente novamente");
+                                        saque = double.Parse(Console.ReadLine());
+                                    }
                                     saldos[result] -= saque;
-                                    Console.WriteLine("Sque realizado com sucesso...");
-                                    Console.WriteLine($"{titulares[result]} Saldo atual é R$ {saldos[result]}\n");
+                                    Console.WriteLine("Saque realizado com sucesso...");
+                                    Console.WriteLine($"{titulares[result]} Saldo atual é R$ {saldos[result]:F2}\n");
                                     retornoEncerrar(); opcao = int.Parse(Console.ReadLine());
                                     Console.Clear();
 
@@ -320,9 +303,10 @@ namespace NewBank
                                     Console.Write("CPF: ");
                                     string cpfTransferencia = Console.ReadLine();
                                     int transfer = cpfs.FindIndex(x => x == cpfTransferencia);
-
-                                    while (transfer == -1 || cpfTransferencia == cpfs[result])
+                                    int trans = 2;
+                                    while (transfer == -1 || cpfTransferencia == cpfs[result] && trans != 2)
                                     {
+                                        trans++;
                                         Console.WriteLine("Usuario invalido, Tente novamente");
                                         cpfTransferencia = Console.ReadLine();
                                         transfer = cpfs.FindIndex(x => x == cpfTransferencia);
@@ -331,7 +315,12 @@ namespace NewBank
                                     Console.WriteLine($"{titulares[result]} Qual valor da tranferencia?");
                                     Console.Write("R$ ");
                                     transferencia = double.Parse(Console.ReadLine());
-                                    Console.WriteLine($"Transferencia de {transferencia} para {titulares[transfer]} confirma ? (s) ou (n) ");
+                                    while (transferencia <= 0)
+                                    {
+                                        Console.WriteLine("Valor invalido, tente novamente");
+                                        transferencia = double.Parse(Console.ReadLine());
+                                    }
+                                    Console.WriteLine($"Transferencia de {transferencia:F2} para {titulares[transfer]} confirma ? (s) ou (n) ");
                                     string resposta = Console.ReadLine();
                                     Console.Clear();                                                // usar variavel char
                                     if (resposta == "s")
@@ -339,14 +328,14 @@ namespace NewBank
                                         saldos[result] -= transferencia;
                                         saldos[transfer] += transferencia;
                                         Console.WriteLine("Transferencia realizada com sucesso");
-                                        Console.WriteLine($"{titulares[result]} Saldo atual é R$ {saldos[result]}\n");
+                                        Console.WriteLine($"{titulares[result]} Saldo atual é R$ {saldos[result]:F2}\n");
                                         retornoEncerrar(); opcao = int.Parse(Console.ReadLine());
                                         Console.Clear();
                                     }
                                     else
                                     {
                                         Console.WriteLine("Transferencia nao efetivada");
-                                        Console.WriteLine($"Saldo atual é R$ {saldos[result]}\n");
+                                        Console.WriteLine($"Saldo atual é R$ {saldos[result]:F2}\n");
                                         retornoEncerrar(); opcao = int.Parse(Console.ReadLine());
                                         Console.Clear();
                                     }
@@ -356,13 +345,18 @@ namespace NewBank
                                     Console.WriteLine($"{titulares[result]} Qual valor do deposito ?");
                                     Console.Write("R$ ");
                                     deposito = double.Parse(Console.ReadLine());
+                                while(deposito <= 0 )
+                                { 
+                                    Console.WriteLine("Valor invalido, tente novamente");
+                                    deposito = double.Parse(Console.ReadLine());
+                                }
                                     saldos[result] += deposito;
-                                    Console.WriteLine($"{titulares[result]} Saldo atual é R$ {saldos[result]}\n");
+                                    Console.WriteLine($"{titulares[result]} Saldo atual é R$ {saldos[result]:F2}\n");
                                     retornoEncerrar(); opcao = int.Parse(Console.ReadLine());
                                     Console.Clear();
-                                }     //ok
+                                }   
                                 //Area de Investimentos ok
-                                else if (opcao == 5)
+                                if (opcao == 5)
                                 {
                                     Console.Write("Quanto gostaria de investir ?\nR$: ");
                                     int valorInvestido = int.Parse(Console.ReadLine());
@@ -373,9 +367,9 @@ namespace NewBank
                                     double poupanca = valorInvestido * 0.005 * tempoInvestido;
                                     double rendaVariavel = valorInvestido * 0.01 * tempoInvestido;
                                     double fundosImobiliarios = valorInvestido * 0.015 * tempoInvestido;
-                                    Console.WriteLine($"{titulares[result]} se investido em poupanca o retorno sera de R$ {poupanca} = Totalizando R$ {valorInvestido + poupanca}...");
-                                    Console.WriteLine($"Se investido em renda variavel o retorno sera de R$ {rendaVariavel} = Totalizando R$ {valorInvestido + rendaVariavel}...");
-                                    Console.WriteLine($"Se investido em fundos imobiliarios o retorno sera de R$ {fundosImobiliarios} = Totalizando  R$ {valorInvestido + fundosImobiliarios}...\n -----------------------------------");
+                                    Console.WriteLine($"{titulares[result]} se investido em poupanca o retorno sera de R$ {poupanca:F2} = Totalizando R$ {valorInvestido + poupanca:F2}...");
+                                    Console.WriteLine($"Se investido em renda variavel o retorno sera de R$ {rendaVariavel:F2} = Totalizando R$ {valorInvestido + rendaVariavel:F2}...");
+                                    Console.WriteLine($"Se investido em fundos imobiliarios o retorno sera de R$ {fundosImobiliarios:F2} = Totalizando  R$ {valorInvestido + fundosImobiliarios:F2}...\n -----------------------------------");
                                     retornoEncerrar(); opcao = int.Parse(Console.ReadLine());
                                     Console.Clear();
 
@@ -393,20 +387,20 @@ namespace NewBank
 
                                     if (crypto == 1)
                                     {
-                                        Console.WriteLine($"Voce acaba de comprar B¢ {valor / 1.59} de Breackcoin");
+                                        Console.WriteLine($"Voce acaba de comprar B¢ {valor / 1.59:F2} de Breackcoin");
                                         Breackcoin = valor / 1.59;
                                     }
                                     else if (crypto == 2)
                                     {
-                                        Console.WriteLine($"Voce acaba de comprar M¢ {valor / 4.57} de Meccoin");
+                                        Console.WriteLine($"Voce acaba de comprar M¢ {valor / 4.57:F2} de Meccoin");
                                         Meccoin = valor / 4.57;
                                     }
                                     else if (crypto == 3)
                                     {
-                                        Console.WriteLine($"Voce acaba de comprar N¢ {valor / 15.46} de Newcoin");
+                                        Console.WriteLine($"Voce acaba de comprar N¢ {valor / 15.46:F2} de Newcoin");
                                         Newcoin = valor / 15.46;
                                     }
-                                    Console.WriteLine($"Saldo atual é R$ {saldos[result]}\n");
+                                    Console.WriteLine($"Saldo atual é R$ {saldos[result]:F2}\n");
                                     retornoEncerrar(); opcao = int.Parse(Console.ReadLine());
                                 }
                                 else if (opcao == 7)
@@ -422,14 +416,14 @@ namespace NewBank
                                         Console.WriteLine("                                           SEU CARTAO ESTA PRONTO ");
                                         Console.WriteLine("                                    __________________________________________________________");
                                         Console.WriteLine("                                    │/////                                                   │");
-                                        Console.WriteLine("                                    │///                                     NEW BANK        │");
+                                        Console.WriteLine("                                    │///                                    BYTE BANK        │");
                                         Console.WriteLine("                                    │//******************************************************│");
-                                        Console.WriteLine("                                    │/                       NN   BBBBBBB                    │");
-                                        Console.WriteLine("                                    │               NNNNN   NN    BB     B                   │");
-                                        Console.WriteLine("                                    │               NN  NN NN     BB B BB                    │");
-                                        Console.WriteLine("                                    │               NN   NNN      BB B BB                    │");
-                                        Console.WriteLine("                                    │               NN            BB     B                   │");
-                                        Console.WriteLine("                                    │               NN            BBBBB B                    │");
+                                        Console.WriteLine("                                    │/                BBBBBBB     BBBBBBB                    │");
+                                        Console.WriteLine("                                    │                 BB     B    BB     B                   │");
+                                        Console.WriteLine("                                    │                 BB B BB     BB B BB                    │");
+                                        Console.WriteLine("                                    │                 BB B BB     BB B BB                    │");
+                                        Console.WriteLine("                                    │                 BB     B    BB     B                   │");
+                                        Console.WriteLine("                                    │                 BBBBB B     BBBBB B                    │");
                                         Console.WriteLine("                                    │  08/30                                                 │");
                                         Console.WriteLine("                                    │_______________________________________CREDITO__________│");
                                         Console.WriteLine("                                    │    ♥  " + nomeCompleto + "                   ////////////");
@@ -445,14 +439,14 @@ namespace NewBank
                                         Console.WriteLine("                                           SEU CARTAO ESTA PRONTO ");
                                         Console.WriteLine("                                    __________________________________________________________");
                                         Console.WriteLine("                                    │/////                                                   │");
-                                        Console.WriteLine("                                    │///                                     NEW BANK        │");
+                                        Console.WriteLine("                                    │///                                    BYTE BANK        │");
                                         Console.WriteLine("                                    │//******************************************************│");
-                                        Console.WriteLine("                                    │/                       NN   BBBBBBB                    │");
-                                        Console.WriteLine("                                    │               NNNNN   NN    BB     B                   │");
-                                        Console.WriteLine("                                    │               NN  NN NN     BB B BB                    │");
-                                        Console.WriteLine("                                    │               NN   NNN      BB B BB                    │");
-                                        Console.WriteLine("                                    │               NN            BB     B                   │");
-                                        Console.WriteLine("                                    │               NN            BBBBB B                    │");
+                                        Console.WriteLine("                                    │/                BBBBBBB     BBBBBBB                    │");
+                                        Console.WriteLine("                                    │                 BB     B    BB     B                   │");
+                                        Console.WriteLine("                                    │                 BB B BB     BB B BB                    │");
+                                        Console.WriteLine("                                    │                 BB B BB     BB B BB                    │");
+                                        Console.WriteLine("                                    │                 BB     B    BB     B                   │");
+                                        Console.WriteLine("                                    │                 BBBBB B     BBBBB B                    │");
                                         Console.WriteLine("                                    │  05/31                                                 │");
                                         Console.WriteLine("                                    │_______________________________________DEBITO___________│");
                                         Console.WriteLine("                                    │    ♥  " + nomeCompleto + "                   ////////////");
