@@ -99,10 +99,6 @@ namespace NewBank
             Console.ForegroundColor = ConsoleColor.Green;
             int n = 0;
 
-            Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
-            Console.WriteLine();
-            nomeBanco();
-            Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
             string cont = "......................................................................................................";
             for (int i = 0; i <cont.Length; i++) 
             {
@@ -116,6 +112,11 @@ namespace NewBank
                 Thread.Sleep(30);
                 Console.Clear();
             }
+            Console.ForegroundColor= ConsoleColor.Green;
+            Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
+            Console.WriteLine();
+            nomeBanco();
+            Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Vamos configurar o sitema ");
 
