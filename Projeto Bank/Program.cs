@@ -60,7 +60,7 @@ namespace NewBank
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine();
             saldos.Add(0);
-        } // ok
+        } 
         static void ListarTodasAsContas(List<string> cpfs, List<string> titulares, List<double> saldos)
         {
             for (int i = 0; i < cpfs.Count; i++)
@@ -100,13 +100,12 @@ namespace NewBank
             int n = 0;
 
             string cont = "......................................................................................................";
-            for (int i = 0; i <cont.Length; i++) 
+            for (int i = 0; i <cont.Length - 1; i++) 
             {
                 Console.BackgroundColor = ConsoleColor.Green;
                 Console.ForegroundColor = ConsoleColor.Black;
                 Console.Write($"Progress {i}% ");
                 Console.ResetColor();
-
                 cont = cont.Substring(0, i) + "#" + cont.Substring(i + 1);
                 Console.WriteLine(cont);                
                 Thread.Sleep(30);
@@ -300,7 +299,7 @@ namespace NewBank
                                     Console.WriteLine($"{titulares[result]} Qual valor do saque ?");
                                     Console.Write("R$ ");
                                     saque = double.Parse(Console.ReadLine());
-                                    while (saque <= 0)
+                                    while (saque <= 0 || saque > saldos[result])
                                     {
                                         Console.WriteLine("Valor invalido, tente novamente");
                                         saque = double.Parse(Console.ReadLine());
@@ -330,7 +329,7 @@ namespace NewBank
                                     Console.WriteLine($"{titulares[result]} Qual valor da tranferencia?");
                                     Console.Write("R$ ");
                                     transferencia = double.Parse(Console.ReadLine());
-                                    while (transferencia <= 0)
+                                    while (transferencia <= 0 || transferencia > saldos[result])
                                     {
                                         Console.WriteLine("Valor invalido, tente novamente");
                                         transferencia = double.Parse(Console.ReadLine());
