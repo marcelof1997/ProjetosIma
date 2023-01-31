@@ -12,9 +12,9 @@ namespace FuncionamentoJogo
         {
             var jogo = new Jogo();
 
-            
-        } 
-       public static void guia()
+
+        }
+        public static void guia()
         {
             Console.ForegroundColor = ConsoleColor.Gray;
             Console.Clear();

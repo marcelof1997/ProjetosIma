@@ -10,12 +10,12 @@ namespace JogadoresGerais
     {
         public static List<Jogador> jogadores = new List<Jogador>();
         public string Nome { get; set; }
-        public int Vitoria {get; set; }
+        public int Vitoria { get; set; }
         public int Derrota { get; set; }
         public int Empate { get; set; }
         public int Pontos { get; set; }
 
-        public Jogador(string nome, int vitoria, int derrota,int empate, int pontos)
+        public Jogador(string nome, int vitoria, int derrota, int empate, int pontos)
         {
             Nome = nome;
             Vitoria = vitoria;
@@ -25,18 +25,17 @@ namespace JogadoresGerais
         }
         public static void adicionarJogador(string nome)
         {
-            
-          jogadores.Add(new Jogador ( nome, 0, 0, 0, 0 ));
-            
+            jogadores.Add(new Jogador(nome, 0, 0, 0, 0));
+
         }
 
         public static void mostrarJogadores()
         {
-            foreach(Jogador jogador in jogadores)
+            foreach (Jogador jogador in jogadores)
             {
                 Console.WriteLine($"Nome: {jogador.Nome} | Vitorias: {jogador.Vitoria} | Derrotas: {jogador.Derrota} | Empates: {jogador.Empate}");
             }
-               
+
         }
         public static void ganhadorJogador1()
         {

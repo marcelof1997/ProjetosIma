@@ -12,27 +12,16 @@ namespace JogoBatalhaNaval
 {
     public class BatalhaNaval
     {
-        private static void menuPlacar()
-        {
-            Console.WriteLine("Para novo jogo digite ----(1)");
-            Console.WriteLine("Para PLACAR digite -------(2)");
-            Console.WriteLine("Para sair digite ---------(0)");
-        }
-        public BatalhaNaval()
-        {
 
-        }
-        public static void jogo()
+        public static void jogo(int p0, int p1)
         {
 
             string[,] Naval = new string[8, 8];
             int pontuacao = 0, quantidadeJogadas = 0, opcao = 1, jogador = 0;
 
-            Console.WriteLine(Jogador.jogadores[0].Nome);
             Console.WriteLine();
 
             string a = "#";
-
 
             Console.WriteLine("           INSTRUCAO DO JOGO \n" +
                 "* Para escolher o local onde deseja ver se tem navio digite uma letra correspondente as linhas e aperte enter\n" +
@@ -40,7 +29,7 @@ namespace JogoBatalhaNaval
                 "* Apos escolher sera destampado e vc vera se acertou o navio ou nao\n" +
                 "* Esse é o navio ±\n" +
                 "* Quando acerta a bomba so na agua ≈ caso nao tenha navio\n\n " +
-                "* Ao final de 15 jogadas sera encerrado e contabilizado os pontos de cada jogador\n" +
+                "* Ao final de 10 jogadas sera encerrado e contabilizado os pontos de cada jogador\n" +
                 "            BOA SORTE\n\n");
             static void tabuleiroNaval()
             {
@@ -82,15 +71,13 @@ namespace JogoBatalhaNaval
                 Console.ForegroundColor = ConsoleColor.Blue;
                 Console.WriteLine("                    |---│---│---|---|---│---│---|---|\n\n");
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("Digite uma letra enter e um numero e enter");
+                Console.WriteLine("Digite uma letra enter e um numero e enter\n");
             }
+
+            Console.WriteLine($"Vez do jogador {Jogador.jogadores[p0].Nome}\n");
             tabuleiroNaval();
             pontuacao = 0;
             int l = 0;
-
-
-
-
             do
             {
 
@@ -103,14 +90,13 @@ namespace JogoBatalhaNaval
                     if (jogador % 2 == 1)
                     {
                         Console.WriteLine();
-                        Console.WriteLine($"Vez do jogador {Jogador.jogadores[0].Nome}");
+                        Console.WriteLine($"Vez do jogador {Jogador.jogadores[p1].Nome}");
                     }
                     else
                     {
                         Console.WriteLine();
-                        Console.WriteLine($"Vez do jogador {Jogador.jogadores[1].Nome}");
+                        Console.WriteLine($"Vez do jogador {Jogador.jogadores[p0].Nome}");
                     }
-
 
                     switch (letra)
                     {
@@ -228,11 +214,11 @@ namespace JogoBatalhaNaval
 
                     quantidadeJogadas++;
 
-                } while (quantidadeJogadas < 4);
+                } while (quantidadeJogadas < 2);
 
                 quantidadeJogadas = 0;
-
-                menuPlacar();
+            inicio:
+                Program.menuPlacar();
 
                 opcao = int.Parse(Console.ReadLine());
                 Console.Clear();
@@ -243,33 +229,33 @@ namespace JogoBatalhaNaval
                     if (jogador % 2 == 1)
                     {
                         Console.WriteLine();
-                        Console.WriteLine($"Vez do jogador {Jogador.jogadores[0].Nome}");
+                        Console.WriteLine($"Vez do jogador {Jogador.jogadores[p0].Nome}");
                     }
                     else
                     {
                         Console.WriteLine();
-                        Console.WriteLine($"Vez do jogador {Jogador.jogadores[1].Nome}");
+                        Console.WriteLine($"Vez do jogador {Jogador.jogadores[p1].Nome}");
                     }
                 }
                 if (opcao == 2)
                 {
 
-                    if (Jogador.jogadores[0].Pontos > Jogador.jogadores[1].Pontos)
+                    if (Jogador.jogadores[p0].Pontos > Jogador.jogadores[p1].Pontos)
                     {
-                        Jogador.jogadores[0].Vitoria++;
-                        Jogador.jogadores[1].Derrota++;
-                        Console.WriteLine($"{Jogador.jogadores[0].Nome} Ganhou");
+                        Jogador.jogadores[p0].Vitoria++;
+                        Jogador.jogadores[p1].Derrota++;
+                        Console.WriteLine($"{Jogador.jogadores[p0].Nome} Ganhou");
                     }
-                    else if (Jogador.jogadores[1].Pontos > Jogador.jogadores[0].Pontos)
+                    else if (Jogador.jogadores[p1].Pontos > Jogador.jogadores[p0].Pontos)
                     {
-                        Jogador.jogadores[1].Vitoria++;
-                        Jogador.jogadores[0].Derrota++;
-                        Console.WriteLine($"{Jogador.jogadores[1].Nome} Ganhou");
+                        Jogador.jogadores[p1].Vitoria++;
+                        Jogador.jogadores[p0].Derrota++;
+                        Console.WriteLine($"{Jogador.jogadores[p1].Nome} Ganhou");
                     }
                     else
                     {
-                        Jogador.jogadores[1].Empate++;
-                        Jogador.jogadores[0].Empate++;
+                        Jogador.jogadores[p1].Empate++;
+                        Jogador.jogadores[p0].Empate++;
                         Console.WriteLine("Deu Empate");
                     }
 
@@ -278,13 +264,25 @@ namespace JogoBatalhaNaval
                     Jogador.mostrarJogadores();
 
                     Console.ForegroundColor = ConsoleColor.Green;
-                    menuPlacar();
+                    Program.menuPlacar();
                     opcao = int.Parse(Console.ReadLine());
                 }
                 if (opcao == 1)
                 {
-                    Naval = new string[8, 8];
-                    tabuleiroNaval();
+                    Program.escolhaDoJogo(p0, p1);
+                }
+                if (opcao == 3)
+                {
+                    Console.WriteLine("Qual a quantidade de jogadores");
+                    int quantidadeDeJogadores = int.Parse(Console.ReadLine());
+
+                    for (int i = 1; i <= quantidadeDeJogadores; i++)
+                    {
+                        Console.Write($"Nome do {i} jogador: ");
+                        string jogador1 = Console.ReadLine();
+                        Jogador.adicionarJogador(jogador1);
+                    }
+                    goto inicio;
                 }
                 else if (opcao == 0)
                 {

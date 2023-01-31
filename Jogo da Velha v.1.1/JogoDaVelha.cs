@@ -12,10 +12,11 @@ namespace JogoDaVelhaA
 {
     public class JogoDaVelha
     {
-        public static void jogo() 
+
+        public static void jogo(int p0, int p1)
         {
             string[,] jogoDaVelha = new string[3, 3];
-            int pontuacao, quantidadeJogadas = 0, opcao = 1, jogador = 0;
+            int pontuacao, quantidadeJogadas = 0, opcao, jogador = 0;
 
             Console.WriteLine("           INSTRUCAO DO JOGO \n" +
                              "* O primeiro jogador ficara com  X \n" +
@@ -28,7 +29,7 @@ namespace JogoDaVelhaA
                     "              2   5   8  \n" +
                     "             ---│---│--- \n" +
             "              3   6   9  \n\n" +
-                 $"   Vez do jogador {Jogador.jogadores[0].Nome}\n");
+                 $"   Vez do jogador {Jogador.jogadores[p0].Nome}\n");
 
             do
             {
@@ -43,12 +44,12 @@ namespace JogoDaVelhaA
                     if (jogador % 2 == 1)
                     {
                         Console.WriteLine();
-                        Console.WriteLine($"Vez do jogador {Jogador.jogadores[0].Nome}");
+                        Console.WriteLine($"Vez do jogador {Jogador.jogadores[p0].Nome}");
                     }
                     else
                     {
                         Console.WriteLine();
-                        Console.WriteLine($"Vez do jogador {Jogador.jogadores[1].Nome}");
+                        Console.WriteLine($"Vez do jogador {Jogador.jogadores[p1].Nome}");
                     }
 
                     if (number >= 1 && number < 4)
@@ -126,13 +127,13 @@ namespace JogoDaVelhaA
                         {
                             if (jogoDaVelha[linha, 0] == "X")
                             {
-                                Console.WriteLine($"jogador {Jogador.jogadores[0].Nome} ganhou na horiontal \nFim de jogo ");
+                                Console.WriteLine($"jogador {Jogador.jogadores[p0].Nome} ganhou na horiontal \nFim de jogo ");
                                 Jogador.ganhadorJogador1();
                                 pontuacao++;
                             }
                             else if (jogoDaVelha[linha, 0] == "O")
                             {
-                                Console.WriteLine($"jogador {Jogador.jogadores[1].Nome} ganhou na horizontal \nFim de jogo ");
+                                Console.WriteLine($"jogador {Jogador.jogadores[p1].Nome} ganhou na horizontal \nFim de jogo ");
                                 Jogador.ganhadorJogador2();
                                 pontuacao++;
                             }
@@ -145,14 +146,14 @@ namespace JogoDaVelhaA
                         {
                             if (jogoDaVelha[0, coluna] == "X")
                             {
-                                Console.WriteLine($"jogador {Jogador.jogadores[0].Nome} ganhou na vertical coluna 0 \nFim de jogo ");
+                                Console.WriteLine($"jogador {Jogador.jogadores[p0].Nome} ganhou na vertical coluna 0 \nFim de jogo ");
                                 Jogador.ganhadorJogador1();
                                 pontuacao++;
 
                             }
                             else if (jogoDaVelha[0, coluna] == "O")
                             {
-                                Console.WriteLine($"jogador {Jogador.jogadores[1].Nome} ganhou na vertical coluna 0 \nFim de jogo ");
+                                Console.WriteLine($"jogador {Jogador.jogadores[p1].Nome} ganhou na vertical coluna 0 \nFim de jogo ");
                                 Jogador.ganhadorJogador2();
                                 pontuacao++;
                             }
@@ -163,13 +164,13 @@ namespace JogoDaVelhaA
                     {
                         if (jogoDaVelha[0, 0] == "X")
                         {
-                            Console.WriteLine($"jogador {Jogador.jogadores[0].Nome} ganhou na diagonal \nFim de jogo ");
+                            Console.WriteLine($"jogador {Jogador.jogadores[p0].Nome} ganhou na diagonal \nFim de jogo ");
                             Jogador.ganhadorJogador1();
                             pontuacao++;
                         }
                         else if (jogoDaVelha[0, 0] == "O")
                         {
-                            Console.WriteLine($"jogador {Jogador.jogadores[1].Nome} ganhou na diagonal \nFim de jogo ");
+                            Console.WriteLine($"jogador {Jogador.jogadores[p1].Nome} ganhou na diagonal \nFim de jogo ");
                             Jogador.ganhadorJogador2();
                             pontuacao++;
                         }
@@ -178,14 +179,14 @@ namespace JogoDaVelhaA
                     {
                         if (jogoDaVelha[1, 1] == "X")
                         {
-                            Console.WriteLine($"jogador {Jogador.jogadores[0].Nome} ganhou na diagonal \nFim de jogo ");
+                            Console.WriteLine($"jogador {Jogador.jogadores[p0].Nome} ganhou na diagonal \nFim de jogo ");
                             Jogador.ganhadorJogador1();
                             pontuacao++;
 
                         }
                         else if (jogoDaVelha[1, 1] == "O")
                         {
-                            Console.WriteLine($"jogador {Jogador.jogadores[1].Nome} ganhou na diagonal \nFim de jogo ");
+                            Console.WriteLine($"jogador {Jogador.jogadores[p1].Nome} ganhou na diagonal \nFim de jogo ");
                             Jogador.ganhadorJogador2(); ;
                             pontuacao++;
                         }
@@ -203,25 +204,16 @@ namespace JogoDaVelhaA
 
                 quantidadeJogadas = 0;
 
-                Jogador.mostrarJogadores();
+            inicio:
+                Program.menuPlacar();
 
                 opcao = int.Parse(Console.ReadLine());
                 Console.Clear();
                 if (opcao == 1)
                 {
-                    jogoDaVelha = new string[3, 3];
-
-                    if (jogador % 2 == 1)
-                    {
-                        Console.WriteLine();
-                        Console.WriteLine($"Vez do jogador {Jogador.jogadores[1].Nome}");
-                    }
-                    else
-                    {
-                        Console.WriteLine();
-                        Console.WriteLine($"Vez do jogador {Jogador.jogadores[0].Nome}");
-                    }
+                    Program.escolhaDoJogo(p0, p1);
                 }
+
                 if (opcao == 2)
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
@@ -229,10 +221,22 @@ namespace JogoDaVelhaA
                     Jogador.mostrarJogadores();
 
                     Console.ForegroundColor = ConsoleColor.Green;
-                    Jogador.mostrarJogadores();
+                    Program.menuPlacar();
                     opcao = int.Parse(Console.ReadLine());
                 }
+                if (opcao == 3)
+                {
+                    Console.WriteLine("Qual a quantidade de jogadores");
+                    int quantidadeDeJogadores = int.Parse(Console.ReadLine());
 
+                    for (int i = 1; i <= quantidadeDeJogadores; i++)
+                    {
+                        Console.Write($"Nome do {i} jogador: ");
+                        string jogador1 = Console.ReadLine();
+                        Jogador.adicionarJogador(jogador1);
+                    }
+                    goto inicio;
+                }
                 else if (opcao == 0)
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
