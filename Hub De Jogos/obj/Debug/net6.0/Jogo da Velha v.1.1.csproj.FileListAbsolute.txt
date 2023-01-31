@@ -28,3 +28,18 @@ C:\Users\marce\source\repos\marcelof1997\ProjetosIma\Jogo da Velha v.1.1\obj\Deb
 C:\Users\marce\source\repos\marcelof1997\ProjetosIma\Jogo da Velha v.1.1\obj\Debug\net6.0\Jogo da Velha v.1.1.pdb
 C:\Users\marce\source\repos\marcelof1997\ProjetosIma\Jogo da Velha v.1.1\obj\Debug\net6.0\Jogo da Velha v.1.1.genruntimeconfig.cache
 C:\Users\marce\source\repos\marcelof1997\ProjetosIma\Jogo da Velha v.1.1\obj\Debug\net6.0\ref\Jogo da Velha v.1.1.dll
+C:\Users\marce\Source\Repos\marcelof1997\ProjetosIma\Hub De Jogos\bin\Debug\net6.0\Jogo da Velha v.1.1.exe
+C:\Users\marce\Source\Repos\marcelof1997\ProjetosIma\Hub De Jogos\bin\Debug\net6.0\Jogo da Velha v.1.1.deps.json
+C:\Users\marce\Source\Repos\marcelof1997\ProjetosIma\Hub De Jogos\bin\Debug\net6.0\Jogo da Velha v.1.1.runtimeconfig.json
+C:\Users\marce\Source\Repos\marcelof1997\ProjetosIma\Hub De Jogos\bin\Debug\net6.0\Jogo da Velha v.1.1.dll
+C:\Users\marce\Source\Repos\marcelof1997\ProjetosIma\Hub De Jogos\bin\Debug\net6.0\Jogo da Velha v.1.1.pdb
+C:\Users\marce\Source\Repos\marcelof1997\ProjetosIma\Hub De Jogos\obj\Debug\net6.0\Jogo da Velha v.1.1.csproj.AssemblyReference.cache
+C:\Users\marce\Source\Repos\marcelof1997\ProjetosIma\Hub De Jogos\obj\Debug\net6.0\Jogo da Velha v.1.1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\marce\Source\Repos\marcelof1997\ProjetosIma\Hub De Jogos\obj\Debug\net6.0\Jogo da Velha v.1.1.AssemblyInfoInputs.cache
+C:\Users\marce\Source\Repos\marcelof1997\ProjetosIma\Hub De Jogos\obj\Debug\net6.0\Jogo da Velha v.1.1.AssemblyInfo.cs
+C:\Users\marce\Source\Repos\marcelof1997\ProjetosIma\Hub De Jogos\obj\Debug\net6.0\Jogo da Velha v.1.1.csproj.CoreCompileInputs.cache
+C:\Users\marce\Source\Repos\marcelof1997\ProjetosIma\Hub De Jogos\obj\Debug\net6.0\Jogo da Velha v.1.1.dll
+C:\Users\marce\Source\Repos\marcelof1997\ProjetosIma\Hub De Jogos\obj\Debug\net6.0\refint\Jogo da Velha v.1.1.dll
+C:\Users\marce\Source\Repos\marcelof1997\ProjetosIma\Hub De Jogos\obj\Debug\net6.0\Jogo da Velha v.1.1.pdb
+C:\Users\marce\Source\Repos\marcelof1997\ProjetosIma\Hub De Jogos\obj\Debug\net6.0\Jogo da Velha v.1.1.genruntimeconfig.cache
+C:\Users\marce\Source\Repos\marcelof1997\ProjetosIma\Hub De Jogos\obj\Debug\net6.0\ref\Jogo da Velha v.1.1.dll

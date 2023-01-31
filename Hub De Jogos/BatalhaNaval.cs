@@ -214,7 +214,7 @@ namespace JogoBatalhaNaval
 
                     quantidadeJogadas++;
 
-                } while (quantidadeJogadas < 2);
+                } while (quantidadeJogadas < 11);
 
                 quantidadeJogadas = 0;
             inicio:
